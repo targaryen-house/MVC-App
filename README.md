@@ -1,5 +1,6 @@
 # --------UNDER DEVELOPMENT-------- #
-# Switchback #
+
+## Switchback ##
 
 **"slogan here"**
 
@@ -67,7 +68,7 @@
 - As a User, --------UNDER DEVELOPMENT--------
 
 ## DEV STORIES ##
-# --------UNDER DEVELOPMENT-------- #
+--------UNDER DEVELOPMENT--------
 - As a Developer, I want my application to be complete to meet my MVP.
 
 - As a Developer, I want my users to be able to navigate my application with a simple clean look and a presentable interface.
