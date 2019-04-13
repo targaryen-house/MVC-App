@@ -161,7 +161,7 @@
 
 ### Web App Wireframe
 
-![Web App Wirefram](https://github.com/targaryen-house/MVC-App/tree/blob/dev-branch/assets/Switchback_WIREFRAME.png)
+![Web App Wirefram](https://github.com/targaryen-house/MVC-App/blob/dev-branch/Assets/Switchback_WIREFRAME.png)
 
 
 ### Database Entity Relationship Diagram(ERD)
