@@ -159,6 +159,17 @@
       - Ensure that the conditions data is posted to the API database
 
 
+### Web App Wireframe
+
+![Web App Wirefram](https://github.com/targaryen-house/MVC-App/tree/master/assets/Switchback_WIREFRAME.png)
+
+
+### Database Entity Relationship Diagram(ERD)
+
+Our web app will connect to a SQL database with two tables.  The first table will store User Names for all users.  The second table will store User Comments.  Each user will be required to select a name to display before they can access our second table.  All User Comments will be displayed on the individual details page for each hiking trail.
+
+![Database ERD Diagram](https://github.com/targaryen-house/MVC-App/tree/master/assets/WebApp_ERD.png)
+
 
 ### API Endpoints and Call/Response Sample ###
 
