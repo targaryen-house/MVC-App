@@ -121,5 +121,29 @@ namespace MVCswitchback.Controllers
             }
             return View(userReview);
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var userReview = await _context.UserReviews
+                .FirstOrDefaultAsync(m => m.ID == id);
+
+            if (userReview == null)
+            {
+                return NotFound();
+            }
+            return View(userReview);
+        }
+
     }
 }
