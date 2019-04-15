@@ -13,22 +13,7 @@ namespace MVCswitchback.Data
         {
 
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //modelBuilder.Entity<>().HasKey(ce => new { ce. , ce.});
-            //modelBuilder.Entity<>().HasKey(ce => new { ce. , ce.});
-            //modelBuilder.Entity<>().HasKey(ce => new { ce. , ce.});
-            //modelBuilder.Entity<>().HasKey(ce => new { ce. , ce.});
-            //modelBuilder.Entity<>().HasKey(ce => new { ce. , ce.});
-
-
-
-        }
-
-        //public DbSet<> { get; set; }
-        //public DbSet<> { get; set; }
-        //public DbSet<> { get; set; }
-        //public DbSet<> { get; set; }
+        public DbSet<UserInfo> UserInfo { get; set; }
+        public DbSet<UserReviews> UserReviews { get; set; }
     }
 }
