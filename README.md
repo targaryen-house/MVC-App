@@ -6,7 +6,7 @@
 
 ## Developers ##
 
-- Andrew *"Roketsu"* Roska (https://github.com/Roketsu86)
+- [Andrew *"Roketsu"* Roska](https://github.com/Roketsu86)
 
 - Christopher *"Secret Squirrel"* Morton (https://github.com/cmorto02)
 
