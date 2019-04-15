@@ -86,6 +86,61 @@ namespace MVCswitchback.Controllers
             return View(userInfo);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> Edit(int id, [Bind(" ID, UserName, FirstName, LastName"] UserInfo userInfo)
+        {
+            if (id != userInfo.ID)
+            {
+                return NotFound();
+            }
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(userInfo);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UserInfoExists(userInfo.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(userInfo);
+        }
+         /// <summary>
+         /// 
+         /// </summary>
+         /// <param name="id"></param>
+         /// <returns></returns>
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var userInfo = await _context.UserInfo
+                .FirstOrDefaultAsync(m => m.ID == id);
+
+            if (userInfo == null)
+            {
+                return NotFound();
+            }
+            return View(userInfo);
+        }
     }
 }
