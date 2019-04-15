@@ -8,13 +8,13 @@
 
 - [Andrew *"Roketsu"* Roska](https://github.com/Roketsu86)
 
-- Christopher *"Secret Squirrel"* Morton (https://github.com/cmorto02)
+- [Christopher *"Secret Squirrel"* Morton](https://github.com/cmorto02)
 
-- Ian *"Hype Man"* Gifford (https://github.com/IanGifford261)
+- [Ian *"Hype Man"* Gifford](https://github.com/IanGifford261)
 
-- Michael *"The Wizard"* Kelly (https://github.com/Michael-S-Kelly)
+- [Michael *"The Wizard"* Kelly](https://github.com/Michael-S-Kelly)
 
-- Tanner *"SKNY-TannMann"* Percival (https://github.com/Tanner253)
+- [Tanner *"SKNY-TannMann"* Percival](https://github.com/Tanner253)
 
 ## About Switchback ##
 ### Version 1.0 ###
@@ -57,7 +57,7 @@
 
 ### MVC User Stories ###
 
-- As a User, I want to be able to search for trails by location, name, or keyword.
+- As a User, I want to be able to search for trails in a given area or by specific keywords.
    - Features
       - Create a Search page for Home Index view
       - Add Regex to search to prevent strings that would result in garbage queries
