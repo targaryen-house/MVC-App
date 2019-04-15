@@ -92,7 +92,7 @@ namespace MVCswitchback.Controllers
         /// <param name="id"></param>
         /// <param name="userInfo"></param>
         /// <returns></returns>
-        public async Task<IActionResult> Edit(int id, [Bind(" ID, UserName, FirstName, LastName"] UserInfo userInfo)
+        public async Task<IActionResult> Edit(int id, [Bind(" ID, UserName, FirstName, LastName")] UserInfo userInfo)
         {
             if (id != userInfo.ID)
             {
@@ -141,6 +141,21 @@ namespace MVCswitchback.Controllers
                 return NotFound();
             }
             return View(userInfo);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            var userInfo = await _context.UserInfo.FindAsync(id);
+            _context.UserInfo.Remove(userInfo);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        
+        private bool UserInfoExists(int id)
+        {
+            return _context.UserInfo.Any(e => e.ID == id);
         }
     }
 }
