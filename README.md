@@ -57,7 +57,7 @@
 
 ### MVC User Stories ###
 
-- As a User, I want to be able to navigate through different trails that I have searched for, so that I can find my best and safest route while having an enjoyable experience.
+- As a User, I want to be able to search for trails in a given area or by specific keywords.
    - Features
       - Create a Search page for Home Index view
       - Add Regex to search to prevent strings that would result in garbage queries
@@ -68,8 +68,19 @@
       - Ensure search parameters are able to be pulled with valid keywords
       - Ensure the query returns valid data
 
+- As a User, I want to be able to navigate through different trails that I have searched for, so that I can find trails that excite me.
+   - Features.
+      - Display returned search data in a list of thumbnails with quick-access info
+      - Provide delimiters for search results to narrow down options
+      - Display an icon on any "hidden gem" trails for easy identification
+      - Allow users to redirect to a page to add their own "hidden gem" trails
 
-- As a User, I would like to know the weather conditions at the trails I am viewing.
+   - Acceptance
+      - All trail data is accurate and easy to digest
+      - Search results can be narrowed down by using the delimiters
+      - "Hidden gems" link correctly redirects
+
+- As a User, I would like to know the weather conditions at the trails I am viewing so that I can make informed decisions regarding when I would like to visit the trail.
    - Features
       - On page load of idividual Details View query OpenWeather for the weather at co-ords of hike
       - Deserialize incoming json package
@@ -79,7 +90,7 @@
       - Ensure API key from weather API is valid and returns needed data
       - Ensure that data is rendered properly to be shown on view 
 
-- As a User, I would like to share my feedback for the trails I have visited, so that other I can make an educated decision if I would like to attempt the trail or not.
+- As a User, I would like to share my feedback for the trails I have visited, so that others can make an educated decision if they would like to attempt the trail or not.
    - Features
       - Add a field for user comments
       - Store user comments in SQL DB
@@ -90,7 +101,7 @@
       - Ensure that a particular user can comment and verify that it is added to the trail
       - Ensure that the relevant number of user comments (chronologically) are displayed on the site.
 
-- As a Developer, I want to be able to get trail information from our API.
+- As a Developer, I want to be able to get trail information from our API so that I can display it to our users.
    - Features
       - Query Trails on the API
       - Process returned json package
@@ -110,7 +121,7 @@
    - Acceptance
       - Ensure that when an update is entered, it is reflected on the Details View
 
-- As a User, I want to be able to add little-known trail information from our API.
+- As a User, I want to be able to add little-known trail information to the API so that other users can discover my "hidden gems".
    - Features
       - Add a submission form for users to submit thier own trails
       - Query Trails on the API to check if user-submitted trail exists already
