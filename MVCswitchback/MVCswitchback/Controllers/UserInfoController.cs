@@ -23,6 +23,11 @@ namespace MVCswitchback.Controllers
             return View(await _context.UserInfo.ToListAsync());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,7 +48,11 @@ namespace MVCswitchback.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind(" ID, UserName, FirstName, LastName")] UserInfo userInfo)
@@ -56,5 +65,27 @@ namespace MVCswitchback.Controllers
             }
             return View(userInfo);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var userInfo = await _context.UserInfo.FindAsync(id);
+            if (userInfo == null)
+            {
+                return NotFound();
+            }
+            return View(userInfo);
+        }
+
+
     }
 }
