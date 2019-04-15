@@ -66,6 +66,24 @@ namespace MVCswitchback.Controllers
             return View(userReview);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var userReview = await _context.UserReviews.FindAsync(id);
+            if (userReview == null)
+            {
+                return NotFound();
+            }
+            return View(userReview);
+        }
     }
 }
