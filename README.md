@@ -3,7 +3,7 @@
 ## Switchback ##
 
 ### **"Venture Into The Known"**
-![Azure Switchback Site](https://switchback.azurewebsites.net/)
+[Azure Switchback Site](https://switchback.azurewebsites.net/)
 
 ## Developers ##
 
