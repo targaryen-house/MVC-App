@@ -42,5 +42,30 @@ namespace MVCswitchback.Controllers
             }
             return View(userReview);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userReview"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind(" ID, UserID, TrailID, UserComment")] UserReviews userReview)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(userReview);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(userReview);
+        }
+
+
     }
 }
