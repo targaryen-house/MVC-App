@@ -108,7 +108,7 @@ namespace MVCswitchback.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserInfoExists(userReview.ID))
+                    if (!UserReviewExists(userReview.ID))
                     {
                         return NotFound();
                     }
@@ -153,6 +153,11 @@ namespace MVCswitchback.Controllers
             _context.UserReviews.Remove(userReview);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        private bool UserReviewExists(int id)
+        {
+            return _context.UserReviews.Any(e => e.ID == id);
         }
     }
 }
