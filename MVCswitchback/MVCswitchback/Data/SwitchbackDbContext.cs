@@ -24,7 +24,6 @@ namespace MVCswitchback.Data
                     UserName = "Cmorto",
                     FirstName = "Christopher",
                     LastName = "Robin"
-
                 });
         }
 
