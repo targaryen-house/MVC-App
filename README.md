@@ -57,7 +57,7 @@
 
 ### MVC User Stories ###
 
-- As a User, I want to be able to search for trails in a given area or by specific keywords.
+- As a User, I want to be able to search for trails by location, name, or keyword.
    - Features
       - Create a Search page for Home Index view
       - Add Regex to search to prevent strings that would result in garbage queries
