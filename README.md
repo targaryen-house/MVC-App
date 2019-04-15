@@ -59,105 +59,67 @@
 
 - As a User, I want to be able to navigate through different trails that I have searched for, so that I can find my best and safest route while having an enjoyable experience.
    - Features
-      - Web App form that allows multiple types of input
-      - Web App query the APIs for returned data and displays on results view.
+      - Create a Search page for Home Index view
+      - Add Regex to search to prevent strings that would result in garbage queries
+      - Query our API with search params
+      - Process returned data and send to correct View
 
    - Acceptance
       - Ensure search parameters are able to be pulled with valid keywords
       - Ensure the query returns valid data
 
 
-- As a User, I would like to know the weather conditions where I am going to chose my trail.
+- As a User, I would like to know the weather conditions at the trails I am viewing.
    - Features
-      - Details view to query weather API with location for weather
-      - Details view will show weather for trail
+      - On page load of idividual Details View query OpenWeather for the weather at co-ords of hike
+      - Deserialize incoming json package
+      - Display weather icon and temperature in Quick Facts panel
 
    - Acceptance
       - Ensure API key from weather API is valid and returns needed data
       - Ensure that data is rendered properly to be shown on view 
 
-- As a User, I would like to share my feedback and rating of the trails I have visited, so that other users are well informed of actual current trail conditions.
+- As a User, I would like to share my feedback for the trails I have visited, so that other I can make an educated decision if I would like to attempt the trail or not.
    - Features
-      - Add user comments
-      - Add user Ratings
-      - View both
+      - Add a field for user comments
+      - Store user comments in SQL DB
+      - Display 10 most recent comments at the bottom of the Details View
+      - Add a link to View for all comments for the trail
 
    - Acceptance
       - Ensure that a particular user can comment and verify that it is added to the trail
       - Ensure that the relevant number of user comments (chronologically) are displayed on the site.
 
-- As a Developer, I want to be able to get and push trail information between the MVC web application and the API.
+- As a Developer, I want to be able to get trail information from our API.
    - Features
       - Query Trails on the API
-      - Update trail information on API
-      - Add trails to the API
+      - Process returned json package
+      - Display
       - Add user ratings
 
    - Acceptance
-      - Populate a particular trail with key search words
-      - Ensure that when an update is entered, it is found on that entry
-      - Ensure that added trail entries/user ratings are added to the API as well (communication between API and MVC)
+      - Ensure query returns json in the format expected
 
-
-- As a User, I want a streamlined site that is easy to understand and obvious to navigate through without prompts.
+- As a Developer, I want to be able to update trail conditions and user ratings on our API.
    - Features
-      - Large easy to read thumbnails, in results view
-      - Simplified, useful Navigation bar
+      - Impliment a drop-down menu on the Details View for users to select from a list of typical conditions the trail may be experiencing
+      - Impliment 5-point star rating selection on Details View
+      - Gather condition and rating into a package and POST to our API
+      - Update Details page to reflect user submittied conditions and ratings
 
    - Acceptance
-      - Ensure site buttons and features are all running through manual usage
-      - Ensure every route is valid, and every page renders all data as request and returned. 
+      - Ensure that when an update is entered, it is reflected on the Details View
 
-
-### API APP user stories ###
-
-- As an API User, I would like to utilize an API that pulls relevant trail information.
+- As a User, I want to be able to add little-known trail information from our API.
    - Features
-      - Set search query item and sent all relevant data in JSON format
+      - Add a submission form for users to submit thier own trails
+      - Query Trails on the API to check if user-submitted trail exists already
+      - Update trail information on API if it already exists
+      - Add trail information to the API if it does not exist
 
    - Acceptance
-      - Ensure that the API is able to receive a query from the website
-      - Ensure that the API is able to send appropriate data in JSON format
-      - Ensure that the queried site is able to receive the JSON information 
-
-- As an API User, I would like to store a rating about particular trails that users apply a rating too.
-   - Features
-      - Accept web app posts to aggregate rating table
-      - Send info back to view for update
-
-   - Acceptance
-      - Ensure that the API is able to receive rating from querying site
-      - Ensure that the average rating is adjusted appropriately
-
-- As an API User, I would like to be able to average the ratings about specific trails, that allows the users an easy comparison.
-   - Features
-      - Return query Lat/Long to querying website for trail entrance
-      - Return query Lat/Long to querying website for trail endpoint
-   
-   - Acceptance
-      - Ensure queried beginning Lat matches expected beginning Lat
-      - Ensure queried beginning Long matches expected beginning Long
-      - Ensure queried ending Lat matches expected ending Lat
-      - Ensure queried ending Long matches expected ending Long
-
-
-- As an API user,  I would like to POST new trails to the API database.
-   - Features
-      - Allow post to API with minimum required data for new trail
-
-   - Acceptance
-      - Ensure API recieves the data passed to it for a new trail
-      - Ensure received data is posted to API database
-
-
-- As an API User, I want to be able to update trail conditions in the API Database.
-   - Features
-      - Allow post to API database with trailID and condition field 
-
-   - Acceptance
-      - Ensure that given a trail ID the API can receive updates to the conditions field
-      - Ensure that the conditions data is posted to the API database
-
+      - User submitted trails should return and display the same as any other trail in our API
+      - User submitted trails should be marked with a unique icon to indicate they are user submitted
 
 ### Web App Wireframe
 
