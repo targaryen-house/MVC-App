@@ -145,5 +145,14 @@ namespace MVCswitchback.Controllers
             return View(userReview);
         }
 
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            var userReview = await _context.UserReviews.FindAsync(id);
+            _context.UserReviews.Remove(userReview);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
