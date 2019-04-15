@@ -2,7 +2,7 @@
 
 ## Switchback ##
 
-**"slogan here"**
+### **"Venture Into The Known"**
 
 ## Developers ##
 
