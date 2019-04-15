@@ -19,6 +19,7 @@ namespace MVCswitchback
 
         public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
+            Environment = environment;
             var builder = new ConfigurationBuilder().AddEnvironmentVariables();
             builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
@@ -27,7 +28,6 @@ namespace MVCswitchback
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
 
             string connectionString = Environment.IsDevelopment()
                                                  ? Configuration["ConnectionStrings:DefaultConnection"]
