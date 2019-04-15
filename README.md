@@ -105,8 +105,7 @@
    - Features
       - Query Trails on the API
       - Process returned json package
-      - Display
-      - Add user ratings
+      - Display results in Details View
 
    - Acceptance
       - Ensure query returns json in the format expected
