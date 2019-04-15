@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace MVCswitchback.Models
         public int TrailID { get; set; }
         public string UserComment { get; set; }
 
+        [NotMapped]
         public ICollection<UserInfo> UserInfo { get; set; }
     }
 }
