@@ -25,6 +25,15 @@ namespace MVCswitchback.Data
                     FirstName = "Christopher",
                     LastName = "Robin"
                 });
+
+            modelBuilder.Entity<UserReviews>().HasData(
+                new UserReviews
+                {
+                    ID = 1,
+                    UserID = 1,
+                    TrailID = 0,
+                    UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle"
+                });
         }
 
         public DbSet<UserInfo> UserInfo { get; set; }
