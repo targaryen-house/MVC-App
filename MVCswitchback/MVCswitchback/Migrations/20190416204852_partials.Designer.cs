@@ -3,14 +3,16 @@ using MVCswitchback.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVCswitchback.Migrations
 {
     [DbContext(typeof(SwitchbackDbContext))]
-    partial class SwitchbackDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190416204852_partials")]
+    partial class partials
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,15 +61,6 @@ namespace MVCswitchback.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("UserReviews");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            TrailID = 0,
-                            UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle",
-                            UserID = 1
-                        });
                 });
 #pragma warning restore 612, 618
         }
