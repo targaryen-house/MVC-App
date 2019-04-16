@@ -1,20 +1,20 @@
 # --------UNDER DEVELOPMENT-------- #
 
-## Switchback ##
+# Switchback #
 
-### **"Venture Into The Known"**
+## **["Venture Into The Known"](https://switchback.azurewebsites.net/)**
 
 ## Developers ##
 
-- Andrew *"Roketsu"* Roska (https://github.com/Roketsu86)
+- [Andrew *"Roketsu"* Roska](https://github.com/Roketsu86)
 
-- Christopher *"Secret Squirrel"* Morton (https://github.com/cmorto02)
+- [Christopher *"Secret Squirrel"* Morton](https://github.com/cmorto02)
 
-- Ian *"Hype Man"* Gifford (https://github.com/IanGifford261)
+- [Ian *"Hype Man"* Gifford](https://github.com/IanGifford261)
 
-- Michael *"The Wizard"* Kelly (https://github.com/Michael-S-Kelly)
+- [Michael *"The Wizard"* Kelly](https://github.com/Michael-S-Kelly)
 
-- Tanner *"SKNY-TannMann"* Percival (https://github.com/Tanner253)
+- [Tanner *"SKNY-TannMann"* Percival](https://github.com/Tanner253)
 
 ## About Switchback ##
 ### Version 1.0 ###
@@ -105,8 +105,7 @@
    - Features
       - Query Trails on the API
       - Process returned json package
-      - Display
-      - Add user ratings
+      - Display results in Details View
 
    - Acceptance
       - Ensure query returns json in the format expected

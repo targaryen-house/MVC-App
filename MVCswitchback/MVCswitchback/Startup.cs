@@ -15,9 +15,11 @@ namespace MVCswitchback
     public class Startup
     {
         public IConfiguration Configuration{ get; }
+        public IHostingEnvironment Environment { get; }
 
-       public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
+            Environment = environment;
             var builder = new ConfigurationBuilder().AddEnvironmentVariables();
             builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
@@ -27,8 +29,12 @@ namespace MVCswitchback
         {
             services.AddMvc();
 
+            string connectionString = Environment.IsDevelopment()
+                                                 ? Configuration["ConnectionStrings:DefaultConnection"]
+                                                 : Configuration["ConnectionStrings:ProductionConnection"];
+
             services.AddDbContext<SwitchbackDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
+                options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,10 +52,10 @@ namespace MVCswitchback
                 template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Hello World!");
+            });
         }
     }
 }
