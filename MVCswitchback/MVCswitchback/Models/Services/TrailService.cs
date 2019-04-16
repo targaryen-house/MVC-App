@@ -31,7 +31,7 @@ namespace MVCswitchback.Models
 
         public async Task<Trail> GetTrail(int id)
         {
-            return _trail.trails.FirstOrDefault(i => i.id == id);
+            return _trail.Trails.FirstOrDefault(i => i.ID == id);
         }
 
         public bool HotelExists(int id)

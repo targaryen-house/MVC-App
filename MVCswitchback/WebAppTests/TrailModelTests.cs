@@ -190,5 +190,16 @@ namespace WebAppTests
             Assert.Equal("Denver", trail.Location);
         }
 
+        [Fact]
+        public void CanGetTrailUrl()
+        {
+            Trail trail = new Trail()
+            {
+                Url = "www.google.com"
+            };
+
+            Assert.Equal("Seattle", trail.Location);
+        }
+
     }
 }
