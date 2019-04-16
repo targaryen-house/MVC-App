@@ -1,57 +1,157 @@
 ﻿@model MVCswitchback.Models.Rootobject
 @{
     ViewData["Title"] = "Index";
+    Layout = "_Layout";
 }
 
-<h1>Index</h1>
+<h1>Results</h1>
+
+@foreach (var item in Model.Trails)
+{
+    <div class="container border boder-primary rounded m-b-2">
+        <a href="#" class="thumbnail">
+            <div class="d-sm-flex align-items-stretch flex-row bg-info" style="height: 50px;">
+                <div class="p-2">
+                    <h2>@item.Name</h2>
+                </div>
+            </div>
+            <div class="d-sm-flex align-items-start flex-row" style="height: 125px;">
+                <div class="p-2">
+                    <img src="@item.ImgSqSmall" />
+                </div>
+                <div class="p-2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Difficulty
+                                </th>
+                                <th>
+                                    Condition
+                                </th>
+                                <th>
+                                    Rating
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @item.Difficulty
+                                </td>
+                                <td>
+                                    @item.ConditionStatus
+                                </td>
+                                <td>
+                                    @item.Stars
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-2">@item.Summary</div>
+            </div>
+        </a>
+    </div>
+
+    @*<div class="container">
+        <a href="#" class="thumbnail">
+            <div class="row">
+                <h2>@item.name</h2>
+            </div>
+            <div class="row">
+                <div class="span4">
+                    <div class="media">
+                        <span class="media-left">
+                            <img src="@item.imgSqSmall" />
+                        </span>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Difficulty
+                                </th>
+                                <th>
+                                    Condition
+                                </th>
+                                <th>
+                                    Rating
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @item.difficulty
+                                </td>
+                                <td>
+                                    @item.conditionStatus
+                                </td>
+                                <td>
+                                    @item.stars
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="col-small">
+                        @item.summary
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                </div>
+    </a>
+    </div>*@
+}
 
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Summary
-            </th>
-            <th>
-                Difficulty
-            </th>
-            <th>
-                Condition
-            </th>
-            <th>
-                Condition Details
-            </th>
-            <th>
-                Condition Posted
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var item in Model.trails)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.summary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.difficulty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.conditionStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.conditionDetails)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.conditionDate)
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+@*<table>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Summary
+                </th>
+                <th>
+                    Difficulty
+                </th>
+                <th>
+                    Condition
+                </th>
+                <th>
+                    Condition Details
+                </th>
+                <th>
+                    Condition Posted
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.trails)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.summary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.difficulty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.conditionStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.conditionDetails)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.conditionDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@

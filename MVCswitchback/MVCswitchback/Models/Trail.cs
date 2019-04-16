@@ -9,57 +9,57 @@ namespace MVCswitchback.Models
 
     public class Rootobject
     {
-        public Trail[] trails { get; set; }
-        public int success { get; set; }
+        public Trail[] Trails { get; set; }
+        public int Success { get; set; }
     }
 
     public class Trail
     {
         [JsonProperty("id")]
-        public int id { get; set; }
+        public int ID { get; set; }
         [JsonProperty("name")]
-        public string name { get; set; }
+        public string Name { get; set; }
         [JsonProperty("type")]
-        public string type { get; set; }
+        public string Type { get; set; }
         [JsonProperty("summary")]
-        public string summary { get; set; }
+        public string Summary { get; set; }
         [JsonProperty("difficulty")]
-        public string difficulty { get; set; }
+        public string Difficulty { get; set; }
         [JsonProperty("stars")]
-        public float stars { get; set; }
+        public float Stars { get; set; }
         [JsonProperty("starVotes")]
-        public int starVotes { get; set; }
+        public int StarVotes { get; set; }
         [JsonProperty("location")]
-        public string location { get; set; }
+        public string Location { get; set; }
         [JsonProperty("url")]
-        public string url { get; set; }
+        public string Url { get; set; }
         [JsonProperty("imgSqSmall")]
-        public string imgSqSmall { get; set; }
+        public string ImgSqSmall { get; set; }
         [JsonProperty("imgSmall")]
-        public string imgSmall { get; set; }
+        public string ImgSmall { get; set; }
         [JsonProperty("imgSmallMed")]
-        public string imgSmallMed { get; set; }
+        public string ImgSmallMed { get; set; }
         [JsonProperty("imgMedium")]
-        public string imgMedium { get; set; }
+        public string ImgMedium { get; set; }
         [JsonProperty("length")]
-        public float length { get; set; }
+        public float Length { get; set; }
         [JsonProperty("ascent")]
-        public int ascent { get; set; }
+        public int Ascent { get; set; }
         [JsonProperty("descent")]
-        public int descent { get; set; }
+        public int Descent { get; set; }
         [JsonProperty("high")]
-        public int high { get; set; }
+        public int High { get; set; }
         [JsonProperty("low")]
-        public int low { get; set; }
+        public int Low { get; set; }
         [JsonProperty("longitude")]
-        public float longitude { get; set; }
+        public float Longitude { get; set; }
         [JsonProperty("latitude")]
-        public float latitude { get; set; }
+        public float Latitude { get; set; }
         [JsonProperty("conditionStatus")]
-        public string conditionStatus { get; set; }
+        public string ConditionStatus { get; set; }
         [JsonProperty("conditionDetails")]
-        public string conditionDetails { get; set; }
+        public string ConditionDetails { get; set; }
         [JsonProperty("conditionDate")]
-        public string conditionDate { get; set; }
+        public string ConditionDate { get; set; }
     }
 }
