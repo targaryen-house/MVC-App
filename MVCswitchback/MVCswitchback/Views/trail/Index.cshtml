@@ -1,0 +1,57 @@
+﻿@model MVCswitchback.Models.Rootobject
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Summary
+            </th>
+            <th>
+                Difficulty
+            </th>
+            <th>
+                Condition
+            </th>
+            <th>
+                Condition Details
+            </th>
+            <th>
+                Condition Posted
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.trails)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.difficulty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.conditionStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.conditionDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.conditionDate)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
