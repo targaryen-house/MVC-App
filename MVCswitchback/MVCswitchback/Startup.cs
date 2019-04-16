@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using MVCswitchback.Data;
 using Microsoft.Extensions.Configuration;
-using MVCswitchback.Models.Interfaces;
 using MVCswitchback.Models;
 
 namespace MVCswitchback
@@ -37,7 +36,6 @@ namespace MVCswitchback
 
             services.AddDbContext<SwitchbackDbContext>(options =>
                 options.UseSqlServer(connectionString));
-            services.AddScoped<ITrail, TrailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
