@@ -6,18 +6,18 @@
 
 <h1>Results</h1>
 
-@foreach (var item in Model.trails)
+@foreach (var item in Model.Trails)
 {
     <div class="container border boder-primary rounded m-b-2">
         <a href="#" class="thumbnail">
             <div class="d-sm-flex align-items-stretch flex-row bg-info" style="height: 50px;">
                 <div class="p-2">
-                    <h2>@item.name</h2>
+                    <h2>@item.Name</h2>
                 </div>
             </div>
             <div class="d-sm-flex align-items-start flex-row" style="height: 125px;">
                 <div class="p-2">
-                    <img src="@item.imgSqSmall" />
+                    <img src="@item.ImgSqSmall" />
                 </div>
                 <div class="p-2">
                     <table class="table">
@@ -37,19 +37,19 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    @item.difficulty
+                                    @item.Difficulty
                                 </td>
                                 <td>
-                                    @item.conditionStatus
+                                    @item.ConditionStatus
                                 </td>
                                 <td>
-                                    @item.stars
+                                    @item.Stars
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="p-2">@item.summary</div>
+                <div class="p-2">@item.Summary</div>
             </div>
         </a>
     </div>
