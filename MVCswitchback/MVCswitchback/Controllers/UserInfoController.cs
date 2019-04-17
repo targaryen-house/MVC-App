@@ -26,7 +26,7 @@ namespace MVCswitchback.Controllers
         /// <summary>
         /// Details of the user information
         /// </summary>
-        /// <param name="id"> the idea of UserInfo </param>
+        /// <param name="id"> the id of UserInfo </param>
         /// <returns> information of selected user </returns>
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,6 +43,10 @@ namespace MVCswitchback.Controllers
             return View(userInfo);
         }
 
+        /// <summary>
+        /// Directs to the creation page
+        /// </summary>
+        /// <returns>the creation view</returns>
         public IActionResult Create()
         {
             return View();
