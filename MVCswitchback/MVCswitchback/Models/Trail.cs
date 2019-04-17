@@ -62,4 +62,11 @@ namespace MVCswitchback.Models
         [JsonProperty("conditionDate")]
         public string ConditionDate { get; set; }
     }
+
+
+
+
+
+
+
 }
