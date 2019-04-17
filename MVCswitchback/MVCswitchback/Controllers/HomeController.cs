@@ -23,27 +23,5 @@ namespace MVCswitchback.Controllers
         {
             return View();
         }
-
-        public async Task<IActionResult> GetCommentView(int? id)
-        {
-            
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var comments = await _context.UserReviews
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (comments == null)
-            {
-                return NotFound();
-            }
-            return PartialView(comments);
-            //get trail id
-
-            //get user comments specific to the trail.
-
-            //return PartialView("_CommentsPartialView");
-
-        }
     }
 }
