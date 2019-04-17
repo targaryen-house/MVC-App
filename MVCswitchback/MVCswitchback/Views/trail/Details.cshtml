@@ -1,9 +1,30 @@
 ﻿@model MVCswitchback.Models.Trail
 @{
     ViewData["Title"] = "Details";
+    Layout = "_Layout";
 }
 
-<h1>Details</h1>
-
-<p>@Model.Name</p>
-
+<div class="container">
+    <h1>@Model.Name</h1>
+    <p>@Model.Location</p>
+    <img src="@Model.ImgMedium" />
+    <div class="d-sm-flex align-items-start flex-row border border-primary rounded" style="height: 125px;">
+        <p>Quick details pane</p>
+        <p>Type: @Model.Type</p>
+        <p>Difficulty: @Model.Difficulty</p>
+        <p>Stars: @Model.Stars</p>
+    </div>
+    <div class="d-sm-flex align-items-start flex-row border border-primary rounded" style="height: 125px;">
+        <p>Length: @Model.Length</p>
+        <p>Ascent: @Model.Ascent</p>
+        <p>Descent: @Model.Descent</p>
+        <p>High: @Model.High</p>
+        <p>Low: @Model.Low</p>
+    </div>
+    <div class="d-sm-flex align-items-start flex-row border border-primary rounded" style="height: 125px;">
+        <p>Condition: @Model.ConditionStatus</p>
+        <p>Condition Date: @Model.ConditionDate</p>
+        <p>Condition Details: @Model.ConditionDetails</p>
+    </div>
+        <p>@Model.Summary</p>
+</div>
