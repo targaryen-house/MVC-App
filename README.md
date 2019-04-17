@@ -44,9 +44,9 @@
 - [] --------UNDER DEVELOPMENT--------
 
 - API's
-- [] --------UNDER DEVELOPMENT--------
+- [X] Switchback API
 
-- [] --------UNDER DEVELOPMENT--------
+- [X] ![OpenWeather](https://openweathermap.org/api)
 
 ### How to set up locally ###
 
