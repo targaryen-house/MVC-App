@@ -7,15 +7,18 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using MVCswitchback.Models.Services;
+using MVCswitchback.Models.Interfaces;
 
 namespace MVCswitchback.Controllers
 {
     public class BackendAPI
     {
-        static HttpClient client = new HttpClient();
 
         public static async Task<Rootobject> GetTrailsAsync(float lat, float lon)
         {
+            HttpClient client = new HttpClient();
+
             // Call Hikingproject API
             client.BaseAddress = new Uri("https://www.hikingproject.com");
             var response = client.GetAsync($"/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200426075-bb9e04f2cd93ffc60dd2762d4f81ff2b").Result;
@@ -36,6 +39,8 @@ namespace MVCswitchback.Controllers
         }
         public static async Task<Trail> GetTrailByID(int id)
         {
+            HttpClient client = new HttpClient();
+
             // Call Hikingproject API
             client.BaseAddress = new Uri("https://www.hikingproject.com");
             var response = client.GetAsync($"/data/get-trails-by-id?ids={id}&key=200426075-bb9e04f2cd93ffc60dd2762d4f81ff2b").Result;
@@ -58,6 +63,8 @@ namespace MVCswitchback.Controllers
         }
         public static async Task<Uri> CreateTrailAsync(Trail trail)
         {
+            HttpClient client = new HttpClient();
+
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
             HttpResponseMessage response = await client.PostAsJsonAsync("api/trails", trail);
             response.EnsureSuccessStatusCode();
@@ -65,6 +72,8 @@ namespace MVCswitchback.Controllers
         }
         public static async Task<Trail> UpdateTrailAsync(Trail trail)
         {
+            HttpClient client = new HttpClient();
+
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
             HttpResponseMessage response = await client.PutAsJsonAsync($"api/trails/{trail.ID}", trail);
             response.EnsureSuccessStatusCode();
@@ -74,6 +83,8 @@ namespace MVCswitchback.Controllers
         }
         public static async Task<HttpStatusCode> DeleteTrailAsync(string id)
         {
+            HttpClient client = new HttpClient();
+
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
             HttpResponseMessage response = await client.DeleteAsync($"api/trails/{id}");
             return response.StatusCode;
@@ -92,6 +103,13 @@ namespace MVCswitchback.Controllers
 
                 return rawWeather;
             }
+
         }
+
+        public static async Task<List<UserReviews>> GetReviews(int id)
+        {
+            GetUserReviews
+        }
+
     }
 }

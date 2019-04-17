@@ -59,35 +59,35 @@ namespace MVCswitchback.Data
                 {
                     ID = 1,
                     UserID = 1,
-                    TrailID = 1,
+                    TrailID = 7000130,
                     UserComment = "My trailmates were all slow, but the trail was great."
                 },
                 new UserReviews
                 {
                     ID = 2,
                     UserID = 2,
-                    TrailID = 1,
+                    TrailID = 7000130,
                     UserComment = "I don't like physical activity..."
                 },
                 new UserReviews
                 {
                     ID = 3,
                     UserID = 3,
-                    TrailID = 1,
+                    TrailID = 7000130,
                     UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle."
                 },
                 new UserReviews
                 {
                     ID = 4,
                     UserID = 4,
-                    TrailID = 1,
+                    TrailID = 7000130,
                     UserComment = "It was ok."
                 },
                 new UserReviews
                 {
                     ID = 5,
                     UserID = 5,
-                    TrailID = 1,
+                    TrailID = 7000130,
                     UserComment = "The trail was fantastic and the views were amazing."
                 });
 

@@ -12,9 +12,10 @@ using Newtonsoft.Json;
 
 namespace MVCswitchback.Controllers
 {
-
     public class TrailController : Controller
     {
+
+
         public async Task<IActionResult> Index(float lat, float lon)
         {
             Rootobject trails = await BackendAPI.GetTrailsAsync(lat, lon);
@@ -24,8 +25,12 @@ namespace MVCswitchback.Controllers
         public async Task<IActionResult> Details(int id)
         {
             Trail trail = await BackendAPI.GetTrailByID(id);
-            return View(trail);
 
+            var userReviews = GetUserReviews(id);
+            userReviews.ToList();
+
+
+            return View(trail);
         }
 
         public IActionResult Create()
