@@ -57,5 +57,20 @@ namespace MVCswitchback.Controllers
             HttpResponseMessage response = await client.DeleteAsync($"api/trails/{id}");
             return response.StatusCode;
         }
+
+        public static async Task<WeatherResponse> GetWeather(float lat, float lon)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://api.openweathermap.org");
+                var response = await client.GetAsync($"/data/2.5/weather?lat={lat}&lon={lon}&appid=cf533494dceec77754749475e189b600");
+                response.EnsureSuccessStatusCode();
+
+                var stringResult = await response.Content.ReadAsStringAsync();
+                var rawWeather = JsonConvert.DeserializeObject<WeatherResponse>(stringResult);
+
+                return rawWeather;
+            }
+        }
     }
 }
