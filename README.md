@@ -33,15 +33,7 @@
 
 - [X] MVC Framework
 
-- [] --------UNDER DEVELOPMENT--------
-
-- [] ---------UNDER DEVELOPMENT-------
-
-- [] --------UNDER DEVELOPMENT--------
-
-- [] --------UNDER DEVELOPMENT--------
-
-- [] --------UNDER DEVELOPMENT--------
+   - [] --------UNDER DEVELOPMENT--------
 
 - API's
 - [X] [Switchback API](https://github.com/targaryen-house/API-App)
