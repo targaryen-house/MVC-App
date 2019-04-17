@@ -9,6 +9,7 @@
 @foreach (var item in Model.Trails)
 {
     <div class="container border boder-primary rounded m-b-2">
+        <a asp-action="Details" asp-route-id="@item.ID">Details</a>
             <div class="d-sm-flex align-items-stretch flex-row bg-info" style="height: 50px;">
                 <div class="p-2">
                     <h2>@item.Name</h2>
@@ -49,7 +50,6 @@
                     </table>
                 </div>
                 <div class="p-2">@item.Summary</div>
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a>
             </div>
     </div>
 

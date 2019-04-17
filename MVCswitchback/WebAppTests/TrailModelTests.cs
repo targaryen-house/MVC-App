@@ -20,7 +20,10 @@ namespace WebAppTests
         [Fact]
         public void CanSetTrailID()
         {
-            Trail trail = new Trail();
+            Trail trail = new Trail()
+            {
+                ID = 1
+            };
             trail.ID = 2;
 
             Assert.Equal(2, trail.ID);
@@ -31,19 +34,22 @@ namespace WebAppTests
         {
             Trail trail = new Trail()
             {
-                Name = "giggity"
+                Name = "Foo"
             };
 
-            Assert.Equal("giggity", trail.Name);
+            Assert.Equal("Foo", trail.Name);
         }
 
         [Fact]
         public void CanSetTrailName()
         {
-            Trail trail = new Trail();
-            trail.Name = "Yeet";
+            Trail trail = new Trail()
+            {
+                Name = "Foo"
+            };
+            trail.Name = "Bar";
 
-            Assert.Equal("Yeet", trail.Name);
+            Assert.Equal("Bar", trail.Name);
         }
 
         [Fact]
@@ -51,19 +57,22 @@ namespace WebAppTests
         {
             Trail trail = new Trail()
             {
-                Type = "long"
+                Type = "Foo"
             };
 
-            Assert.Equal("long", trail.Type);
+            Assert.Equal("Foo", trail.Type);
         }
 
         [Fact]
         public void CanSetTrailType()
         {
-            Trail trail = new Trail();
-            trail.Type = "No";
+            Trail trail = new Trail()
+            {
+                Type = "Foo"
+            };
+            trail.Type = "Bar";
 
-            Assert.Equal("No", trail.Type);
+            Assert.Equal("Bar", trail.Type);
         }
 
         [Fact]
@@ -71,19 +80,22 @@ namespace WebAppTests
         {
             Trail trail = new Trail()
             {
-                Summary = "It was long"
+                Summary = "FooBar"
             };
 
-            Assert.Equal("It was long", trail.Summary);
+            Assert.Equal("FooBar", trail.Summary);
         }
 
         [Fact]
         public void CanSetTrailSummary()
         {
-            Trail trail = new Trail();
-            trail.Summary = "What day is it";
+            Trail trail = new Trail()
+            {
+                Summary = "FooBar"
+            };
+            trail.Summary = "BarFoo";
 
-            Assert.Equal("What day is it", trail.Summary);
+            Assert.Equal("BarFoo", trail.Summary);
         }
 
         [Fact]
@@ -91,80 +103,103 @@ namespace WebAppTests
         {
             Trail trail = new Trail()
             {
-                Difficulty = "tuff"
+                Difficulty = "Foo"
             };
 
-            Assert.Equal("tuff", trail.Difficulty);
+            Assert.Equal("Foo", trail.Difficulty);
         }
 
         [Fact]
         public void CanSetTrailDifficulty()
         {
-            Trail trail = new Trail();
-            trail.Summary = "easy peasy";
+            Trail trail = new Trail()
+            {
+                Difficulty = "Foo"
+            };
+            trail.Difficulty = "Bar";
 
-            Assert.Equal("easy peasy", trail.Summary);
+            Assert.Equal("Bar", trail.Difficulty);
         }
 
-        //[Fact]
-        //public void CanGetTrailID()
-        //{
-        //    Trail trail = new Trail()
-        //    {
-        //        ID = 1
-        //    };
+        [Fact]
+        public void CanSetTrailStars()
+        {
+            Trail trail = new Trail()
+            {
+                Stars = 3.3f
+            };
 
-        //    Assert.Equal(1, trail.ID);
-        //}
+            Assert.Equal(3.3f, trail.Stars);
+        }
 
-        //[Fact]
-        //public void CanSetTrailID()
-        //{
-        //    Trail trail = new Trail();
-        //    trail.ID = 2;
+        [Fact]
+        public void CanGetTrailStars()
+        {
+            Trail trail = new Trail()
+            {
+                Stars = 3.3f
+            };
+            trail.Stars = 5.0f;
 
-        //    Assert.Equal(2, trail.ID);
-        //}
+            Assert.Equal(5.0f, trail.Stars);
+        }
 
-        //[Fact]
-        //public void CanGetTrailID()
-        //{
-        //    Trail trail = new Trail()
-        //    {
-        //        ID = 1
-        //    };
+        [Fact]
+        public void CanGetTrailStarVotes()
+        {
+            Trail trail = new Trail()
+            {
+                StarVotes = 50
+            };
 
-        //    Assert.Equal(1, trail.ID);
-        //}
+            Assert.Equal(50, trail.StarVotes);
+        }
 
-        //[Fact]
-        //public void CanSetTrailID()
-        //{
-        //    Trail trail = new Trail();
-        //    trail.ID = 2;
+        [Fact]
+        public void CanSetTrailStarVotes()
+        {
+            Trail trail = new Trail()
+            {
+                StarVotes = 50
+            };
+            trail.StarVotes = 100;
 
-        //    Assert.Equal(2, trail.ID);
-        //}
+            Assert.Equal(100, trail.StarVotes);
+        }
 
-        //[Fact]
-        //public void CanGetTrailID()
-        //{
-        //    Trail trail = new Trail()
-        //    {
-        //        ID = 1
-        //    };
+        [Fact]
+        public void CanGetTrailLocation()
+        {
+            Trail trail = new Trail()
+            {
+                Location = "Seattle"
+            };
 
-        //    Assert.Equal(1, trail.ID);
-        //}
+            Assert.Equal("Seattle", trail.Location);
+        }
 
-        //[Fact]
-        //public void CanSetTrailID()
-        //{
-        //    Trail trail = new Trail();
-        //    trail.ID = 2;
+        [Fact]
+        public void CanSetTrailLocation()
+        {
+            Trail trail = new Trail()
+            {
+                Location = "Seattle"
+            };
+            trail.Location = "Denver";
 
-        //    Assert.Equal(2, trail.ID);
-        //}
+            Assert.Equal("Denver", trail.Location);
+        }
+
+        [Fact]
+        public void CanGetTrailUrl()
+        {
+            Trail trail = new Trail()
+            {
+                Url = "www.google.com"
+            };
+
+            Assert.Equal("Seattle", trail.Location);
+        }
 
     }
 }
