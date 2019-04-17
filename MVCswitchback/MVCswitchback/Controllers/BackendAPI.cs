@@ -12,7 +12,6 @@ namespace MVCswitchback.Controllers
 {
     public class BackendAPI
     {
-        HttpClient client = new HttpClient();
 
         /// <summary>
         /// Sends Request for data from our API
@@ -85,7 +84,7 @@ namespace MVCswitchback.Controllers
         /// </summary>
         /// <param name="id"> id of trail </param>
         /// <returns> a response message of deletion </returns>
-        public static async Task<HttpStatusCode> DeleteTrailAsync(string id)
+        public static async Task<HttpStatusCode> DeleteTrailAsync(int id)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
