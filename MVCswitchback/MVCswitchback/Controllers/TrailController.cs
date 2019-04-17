@@ -9,23 +9,23 @@ using Microsoft.AspNetCore.Routing;
 using MVCswitchback.Models;
 using Newtonsoft.Json;
 
+
 namespace MVCswitchback.Controllers
 {
 
     public class TrailController : Controller
     {
-        static HttpClient client = new HttpClient();
-
-
-        public async Task<IActionResult> Index(string SearchString)
+        public async Task<IActionResult> Index(float lat, float lon)
         {
-            Rootobject trails = await BackendAPI.GetJObjectAsync(SearchString);
+            Rootobject trails = await BackendAPI.GetJObjectAsync(lat, lon);
             return View(trails);
         }
 
-        public IActionResult Details()
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            Trail trail = await BackendAPI.GetObjectByID(id);
+            return View(trail);
+
         }
 
         public IActionResult Create()
