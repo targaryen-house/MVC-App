@@ -17,13 +17,13 @@ namespace MVCswitchback.Controllers
     {
         public async Task<IActionResult> Index(float lat, float lon)
         {
-            Rootobject trails = await BackendAPI.GetJObjectAsync(lat, lon);
+            Rootobject trails = await BackendAPI.GetTrailsAsync(lat, lon);
             return View(trails);
         }
 
         public async Task<IActionResult> Details(int id)
         {
-            Trail trail = await BackendAPI.GetObjectByID(id);
+            Trail trail = await BackendAPI.GetTrailByID(id);
             return View(trail);
 
         }
@@ -33,9 +33,10 @@ namespace MVCswitchback.Controllers
             return View();
         }
 
-        public IActionResult Edit()
+        public async Task<IActionResult> Edit(Trail trail)
         {
-            return View();
+            Trail returnTrail = await BackendAPI.UpdateTrailAsync(trail);
+            return View(returnTrail);
         }
 
         public IActionResult Delete()
