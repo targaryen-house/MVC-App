@@ -24,10 +24,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Details of the user information
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id"> the idea of UserInfo </param>
+        /// <returns> information of selected user </returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,10 +49,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Creates new user information
         /// </summary>
         /// <param name="userInfo"></param>
-        /// <returns></returns>
+        /// <returns> new user that was created </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind(" ID, UserName, FirstName, LastName")] UserInfo userInfo)
@@ -67,10 +67,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// 
+        /// redirects to editor of selected user
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns> Edit page </returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,11 +87,11 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Edits user information
         /// </summary>
         /// <param name="id"></param>
         /// <param name="userInfo"></param>
-        /// <returns></returns>
+        /// <returns> edited user info </returns>
         public async Task<IActionResult> Edit(int id, [Bind(" ID, UserName, FirstName, LastName")] UserInfo userInfo)
         {
             if (id != userInfo.ID)
@@ -123,10 +123,10 @@ namespace MVCswitchback.Controllers
         }
 
          /// <summary>
-         /// 
+         /// Directs to delete page
          /// </summary>
          /// <param name="id"></param>
-         /// <returns></returns>
+         /// <returns> delete confirmation </returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,6 +144,11 @@ namespace MVCswitchback.Controllers
             return View(userInfo);
         }
 
+        /// <summary>
+        /// Deletes a specified user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> Confirmed deletion </returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirm(int id)
