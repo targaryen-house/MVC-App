@@ -42,6 +42,14 @@ namespace MVCswitchback.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("")] Trail trail)
+        {
+            await BackendAPI.CreateTrailAsync(trail);
+            Trail returnTrail = await BackendAPI.GetTrailByID(trail.ID);
+            return View(returnTrail);
+        }
+
         /// <summary>
         /// Edits the selected trail
         /// </summary>
@@ -57,9 +65,10 @@ namespace MVCswitchback.Controllers
         /// Deletes selected trail
         /// </summary>
         /// <returns> deletion confirmation </returns>
-        public IActionResult Delete()
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            var status =  await BackendAPI.DeleteTrailAsync(id);
+            return View(status);
         }
     }
 }
