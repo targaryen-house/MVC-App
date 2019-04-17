@@ -9,76 +9,39 @@ using Microsoft.AspNetCore.Routing;
 using MVCswitchback.Models;
 using Newtonsoft.Json;
 
+
 namespace MVCswitchback.Controllers
 {
 
     public class TrailController : Controller
     {
-
-        static HttpClient client = new HttpClient();
-
-
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(float lat, float lon)
         {
-            using (var client = new HttpClient())
-            {
-                try
-                {
-                    client.BaseAddress = new Uri("https://www.hikingproject.com");
-                    var response = client.GetAsync($"/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200426075-bb9e04f2cd93ffc60dd2762d4f81ff2b").Result;
-                    response.EnsureSuccessStatusCode();
-
-                    var stringResult = await response.Content.ReadAsStringAsync();
-                    Rootobject rawTrail = JsonConvert.DeserializeObject<Rootobject>(stringResult);
-                    return View(rawTrail);
-                }
-                catch (HttpRequestException httpRequestException)
-                {
-
-                    return BadRequest($"Error getting information from Switchback: {httpRequestException}");
-                }
-            }
+            Rootobject trails = await BackendAPI.GetTrailsAsync(lat, lon);
+            return View(trails);
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            Trail trail = await BackendAPI.GetTrailByID(id);
+            return View(trail);
 
+        }
 
-        //static void ShowTrails(Trail trail)
-        //{
-        //    Console.WriteLine($"Name: {trail.name}");
-        //}
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-        //static async Task<Uri> CreateTrailAsync(Trail trail)
-        //{
-        //    HttpResponseMessage response = await client.PostAsJsonAsync("api/trail", trail);
-        //    response.EnsureSuccessStatusCode();
+        public async Task<IActionResult> Edit(Trail trail)
+        {
+            Trail returnTrail = await BackendAPI.UpdateTrailAsync(trail);
+            return View(returnTrail);
+        }
 
-        //    return URI or the created resource.
-        //    return response.Headers.Location;
-        //}
-        //static async Task<Trail> GetTrailAsync(string path)
-        //{
-        //    Trail trail = null;
-        //    HttpResponseMessage response = await client.GetAsync(path);
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        trail = await response.Content.ReadAsAsync<Trail>();
-        //    }
-        //    return trail;
-        //}
-        //static async Task<Trail> UpdateTrailAsync(Trail trail)
-        //{
-        //    HttpResponseMessage response = await client.PutAsJsonAsync($"api/trails/{trail.id}", trail);
-        //    response.EnsureSuccessStatusCode();
-
-        //    Deserialize the updatet trail from the response body
-        //    trail = await response.Content.ReadAsAsync<Trail>();
-        //    return trail;
-        //}
-        //static async Task<HttpStatusCode> DeleteTrailAsync(string id)
-        //{
-        //    HttpResponseMessage response = await client.DeleteAsync($"api/trails/{id}");
-        //    return response.StatusCode;
-        //}
-
+        public IActionResult Delete()
+        {
+            return View();
+        }
     }
 }

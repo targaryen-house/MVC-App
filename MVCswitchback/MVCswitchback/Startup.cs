@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using MVCswitchback.Data;
 using Microsoft.Extensions.Configuration;
+using MVCswitchback.Models;
 
 namespace MVCswitchback
 {
@@ -52,10 +53,6 @@ namespace MVCswitchback
                 template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
         }
     }
 }
