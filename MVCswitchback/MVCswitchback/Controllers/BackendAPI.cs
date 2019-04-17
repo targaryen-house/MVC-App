@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -11,32 +12,50 @@ namespace MVCswitchback.Controllers
 {
     public class BackendAPI
     {
-        public static async Task<Rootobject> GetJObjectAsync(float lat, float lon)
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://www.hikingproject.com");
-                var response = client.GetAsync($"/data/get-trails?lat={lat}&lon={lon}&maxDistance=10&key=200426075-bb9e04f2cd93ffc60dd2762d4f81ff2b").Result;
-                response.EnsureSuccessStatusCode();
+        static HttpClient client = new HttpClient();
 
-                var stringResult = await response.Content.ReadAsStringAsync();
-                Rootobject rawTrail = JsonConvert.DeserializeObject<Rootobject>(stringResult);
-                return rawTrail;
-            }
+        public static async Task<Rootobject> GetTrailsAsync(float lat, float lon)
+        {
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
+            var response = client.GetAsync($"api/bing/").Result;
+            response.EnsureSuccessStatusCode();
+
+            var stringResult = await response.Content.ReadAsStringAsync();
+            Rootobject rawTrail = JsonConvert.DeserializeObject<Rootobject>(stringResult);
+            return rawTrail;
         }
-        public static async Task<Trail> GetObjectByID(int id)
+        public static async Task<Trail> GetTrailByID(int id)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("Https://www.hikingproject.com");
-                var response = client.GetAsync($"/data/get-trails-by-id?ids={id}&key=200426075-bb9e04f2cd93ffc60dd2762d4f81ff2b").Result;
-                response.EnsureSuccessStatusCode();
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
+            var response = client.GetAsync($"api/trails/{id}").Result;
+            response.EnsureSuccessStatusCode();
 
-                var stringResult = await response.Content.ReadAsStringAsync();
-                Rootobject rawTrail = JsonConvert.DeserializeObject<Rootobject>(stringResult);
-                Trail singletrail = rawTrail.Trails[0];
-                return singletrail;
-            }
+            var stringResult = await response.Content.ReadAsStringAsync();
+            Rootobject rawTrail = JsonConvert.DeserializeObject<Rootobject>(stringResult);
+            Trail singletrail = rawTrail.Trails[0];
+            return singletrail;
+        }
+        public static async Task<Uri> CreateTrailAsync(Trail trail)
+        {
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
+            HttpResponseMessage response = await client.PostAsJsonAsync("api/trails", trail);
+            response.EnsureSuccessStatusCode();
+            return response.Headers.Location;
+        }
+        public static async Task<Trail> UpdateTrailAsync(Trail trail)
+        {
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
+            HttpResponseMessage response = await client.PutAsJsonAsync($"api/trails/{trail.ID}", trail);
+            response.EnsureSuccessStatusCode();
+
+            trail = await response.Content.ReadAsAsync<Trail>();
+            return trail;
+        }
+        public static async Task<HttpStatusCode> DeleteTrailAsync(string id)
+        {
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
+            HttpResponseMessage response = await client.DeleteAsync($"api/trails/{id}");
+            return response.StatusCode;
         }
 
         public static async Task<WeatherResponse> GetWeather(float lat, float lon)
