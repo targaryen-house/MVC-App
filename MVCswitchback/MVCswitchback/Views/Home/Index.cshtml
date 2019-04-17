@@ -12,9 +12,24 @@
     <title>Switchback</title>
 </head>
 <body>
-    <h1>Didney Worl!</h1>
-    <a href="/Trail">Search for trails</a>
-    <partial name="_CommentsPartialView" />
+
+    @*<div>
+        <partial name="_CommentsPartialView" />
+        <table class="table table-condensed">
+            @foreach (var comments in Model.UserComment)
+            {
+                @Html.PartialAsync("_CommentsPartialView", comments);
+            }
+        </table>
+    </div>*@
+    <h1>Venture Into The Known</h1>
+    <form asp-controller="Trail" asp-action="Index">
+        <p>
+            Search: <input type="text" name="lat">
+            <input type="text" name="lon">
+            <input type="submit" value="Search" />
+        </p>
+    </form>
 
 </body>
 </html>

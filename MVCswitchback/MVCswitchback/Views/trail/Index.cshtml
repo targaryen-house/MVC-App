@@ -9,7 +9,6 @@
 @foreach (var item in Model.Trails)
 {
     <div class="container border boder-primary rounded m-b-2">
-        <a href="#" class="thumbnail">
             <div class="d-sm-flex align-items-stretch flex-row bg-info" style="height: 50px;">
                 <div class="p-2">
                     <h2>@item.Name</h2>
@@ -50,59 +49,60 @@
                     </table>
                 </div>
                 <div class="p-2">@item.Summary</div>
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a>
             </div>
-        </a>
     </div>
 
+
     @*<div class="container">
-        <a href="#" class="thumbnail">
-            <div class="row">
-                <h2>@item.name</h2>
-            </div>
-            <div class="row">
-                <div class="span4">
-                    <div class="media">
-                        <span class="media-left">
-                            <img src="@item.imgSqSmall" />
-                        </span>
+            <a href="#" class="thumbnail">
+                <div class="row">
+                    <h2>@item.name</h2>
+                </div>
+                <div class="row">
+                    <div class="span4">
+                        <div class="media">
+                            <span class="media-left">
+                                <img src="@item.imgSqSmall" />
+                            </span>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Difficulty
+                                    </th>
+                                    <th>
+                                        Condition
+                                    </th>
+                                    <th>
+                                        Rating
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @item.difficulty
+                                    </td>
+                                    <td>
+                                        @item.conditionStatus
+                                    </td>
+                                    <td>
+                                        @item.stars
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="col-small">
+                            @item.summary
+                        </p>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Difficulty
-                                </th>
-                                <th>
-                                    Condition
-                                </th>
-                                <th>
-                                    Rating
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @item.difficulty
-                                </td>
-                                <td>
-                                    @item.conditionStatus
-                                </td>
-                                <td>
-                                    @item.stars
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="col-small">
-                        @item.summary
-                    </p>
                 </div>
-            </div>
-            <div class="row">
-                </div>
-    </a>
-    </div>*@
+                <div class="row">
+                    </div>
+        </a>
+        </div>*@
 }
 
 
