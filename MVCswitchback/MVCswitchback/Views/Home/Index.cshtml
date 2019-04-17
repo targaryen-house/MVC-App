@@ -1,14 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Home";
-    ViewData["Heading"] = "Home";
+    //ViewData["Heading"] = "Home";
     Layout = "_Layout";
 }
+
+@model MVCswitchback.Models.UserReviews
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Switchback</title>
 </head>
 <body>
+
+    @*<div>
+        <partial name="_CommentsPartialView" />
+        <table class="table table-condensed">
+            @foreach (var comments in Model.UserComment)
+            {
+                @Html.PartialAsync("_CommentsPartialView", comments);
+            }
+        </table>
+    </div>*@
     <h1>Venture Into The Known</h1>
     <form asp-controller="Trail" asp-action="Index">
         <p>
