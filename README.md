@@ -44,9 +44,9 @@
 - [] --------UNDER DEVELOPMENT--------
 
 - API's
-- [X] Switchback API
+- [X] [Switchback API](https://github.com/targaryen-house/API-App)
 
-- [X] ![OpenWeather](https://openweathermap.org/api)
+- [X] [OpenWeather](https://openweathermap.org/api)
 
 ### How to set up locally ###
 
