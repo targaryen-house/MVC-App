@@ -195,11 +195,344 @@ namespace WebAppTests
         {
             Trail trail = new Trail()
             {
-                Url = "www.google.com"
+                Url = "www.testurl.com"
             };
 
-            Assert.Equal("Seattle", trail.Location);
+            Assert.Equal("www.testurl.com", trail.Url);
         }
 
+        [Fact]
+        public void CanSetTrailUrl()
+        {
+            Trail trail = new Trail()
+            {
+                Url = "www.testurl.com"
+            };
+            trail.Url = "www.testurl.com";
+
+            Assert.Equal("www.testurl.com", trail.Url);
+        }
+
+        [Fact]
+        public void CanGetTrailImgSqSmall()
+        {
+            Trail trail = new Trail()
+            {
+                ImgSqSmall = "smol"
+            };
+
+            Assert.Equal("smol", trail.ImgSqSmall);
+        }
+
+        [Fact]
+        public void CanSetTrailImgSqSmall()
+        {
+            Trail trail = new Trail()
+            {
+                ImgSqSmall = "verySmol"
+            };
+            trail.ImgSqSmall = "verySmol";
+
+            Assert.Equal("verySmol", trail.ImgSqSmall);
+        }
+
+        [Fact]
+        public void CanGetTrailImgSmall()
+        {
+            Trail trail = new Trail()
+            {
+                ImgSmall = "tiny"
+            };
+
+            Assert.Equal("tiny", trail.ImgSmall);
+        }
+
+        [Fact]
+        public void CanSetTrailImgSmall()
+        {
+            Trail trail = new Trail()
+            {
+                ImgSmall = "issaTest"
+            };
+            trail.ImgSmall = "issaTest";
+
+            Assert.Equal("issaTest", trail.ImgSmall);
+        }
+
+        [Fact]
+        public void CanGetTrailImgSmallMed()
+        {
+            Trail trail = new Trail()
+            {
+                ImgSmallMed = "smallishMedium"
+            };
+
+            Assert.Equal("smallishMedium", trail.ImgSmallMed);
+        }
+
+        [Fact]
+        public void CanSetTrailImgSmallMed()
+        {
+            Trail trail = new Trail()
+            {
+                ImgSmallMed = "maybeJustMedium"
+            };
+            trail.ImgSmallMed = "maybeJustMedium";
+
+            Assert.Equal("maybeJustMedium", trail.ImgSmallMed);
+        }
+
+        [Fact]
+        public void CanGetTrailImgMedium()
+        {
+            Trail trail = new Trail()
+            {
+                ImgMedium = "soRealMedium"
+            };
+
+            Assert.Equal("soRealMedium", trail.ImgMedium);
+        }
+
+        [Fact]
+        public void CanSetTrailImgMedium()
+        {
+            Trail trail = new Trail()
+            {
+                ImgMedium = "bigMed"
+            };
+            trail.ImgMedium = "bigMed";
+
+            Assert.Equal("bigMed", trail.ImgMedium);
+        }
+
+        [Fact]
+        public void CanGetTrailLength()
+        {
+            Trail trail = new Trail()
+            {
+                Length = 420f
+            };
+
+            Assert.Equal(420f, trail.Length);
+        }
+
+        [Fact]
+        public void CanSetTrailLength()
+        {
+            Trail trail = new Trail()
+            {
+                Length = 123f
+            };
+            trail.Length = 123f;
+
+            Assert.Equal(123f, trail.Length);
+        }
+
+        [Fact]
+        public void CanGetTrailAscent()
+        {
+            Trail trail = new Trail()
+            {
+                Ascent = 747
+            };
+
+            Assert.Equal(747, trail.Ascent);
+        }
+
+        [Fact]
+        public void CanSetTrailAscent()
+        {
+            Trail trail = new Trail()
+            {
+                Ascent = 9000
+            };
+            trail.Ascent = 9000;
+
+            Assert.Equal(9000, trail.Ascent);
+        }
+
+        [Fact]
+        public void CanGetTrailDescent()
+        {
+            Trail trail = new Trail()
+            {
+                Descent = 459
+            };
+
+            Assert.Equal(459, trail.Descent);
+        }
+
+        [Fact]
+        public void CanSetTrailDescent()
+        {
+            Trail trail = new Trail()
+            {
+                Descent = 7
+            };
+            trail.Descent = 7;
+
+            Assert.Equal(7, trail.Descent);
+        }
+
+        [Fact]
+        public void CanGetTrailHigh()
+        {
+            Trail trail = new Trail()
+            {
+                High = 67
+            };
+
+            Assert.Equal(67, trail.High);
+        }
+
+        [Fact]
+        public void CanSetTrailHigh()
+        {
+            Trail trail = new Trail()
+            {
+                High = 99
+            };
+            trail.High = 99;
+
+            Assert.Equal(99, trail.High);
+        }
+
+        [Fact]
+        public void CanGetTrailLow()
+        {
+            Trail trail = new Trail()
+            {
+                Low = 1
+            };
+
+            Assert.Equal(1, trail.Low);
+        }
+
+        [Fact]
+        public void CanSetTrailLow()
+        {
+            Trail trail = new Trail()
+            {
+                Low = 2
+            };
+            trail.Low = 2;
+
+            Assert.Equal(2, trail.Low);
+        }
+
+        [Fact]
+        public void CanGetTrailLongitude()
+        {
+            Trail trail = new Trail()
+            {
+                Longitude = 47
+            };
+
+            Assert.Equal(47, trail.Longitude);
+        }
+
+        [Fact]
+        public void CanSetTrailLongitude()
+        {
+            Trail trail = new Trail()
+            {
+                Longitude = 56
+            };
+            trail.Longitude = 56;
+
+            Assert.Equal(56, trail.Longitude);
+        }
+
+        [Fact]
+        public void CanGetTrailLatitude()
+        {
+            Trail trail = new Trail()
+            {
+                Latitude = 25
+            };
+
+            Assert.Equal(25, trail.Latitude);
+        }
+
+        [Fact]
+        public void CanSetTrailLatitude()
+        {
+            Trail trail = new Trail()
+            {
+                Latitude = 68
+            };
+            trail.Latitude = 68;
+
+            Assert.Equal(68, trail.Latitude);
+        }
+
+        [Fact]
+        public void CanGetTrailConditionStatus()
+        {
+            Trail trail = new Trail()
+            {
+                ConditionStatus = "Open? maybe"
+            };
+
+            Assert.Equal("Open? maybe", trail.ConditionStatus);
+        }
+
+        [Fact]
+        public void CanSetTrailConditionStatus()
+        {
+            Trail trail = new Trail()
+            {
+                ConditionStatus = "Nope"
+            };
+            trail.ConditionStatus = "Nope";
+
+            Assert.Equal("Nope", trail.ConditionStatus);
+        }
+
+        [Fact]
+        public void CanGetTrailConditionDetails()
+        {
+            Trail trail = new Trail()
+            {
+                ConditionDetails = "rough"
+            };
+
+            Assert.Equal("rough", trail.ConditionDetails);
+        }
+
+        [Fact]
+        public void CanSetTrailConditionDetails()
+        {
+            Trail trail = new Trail()
+            {
+                ConditionDetails = "very rough"
+            };
+            trail.ConditionDetails = "very rough";
+
+            Assert.Equal("very rough", trail.ConditionDetails);
+        }
+
+        [Fact]
+        public void CanGetTrailConditionDate()
+        {
+            Trail trail = new Trail()
+            {
+                ConditionDate = "27APR"
+            };
+
+            Assert.Equal("27APR", trail.ConditionDate);
+        }
+
+        [Fact]
+        public void CanSetTrailConditionDate()
+        {
+            Trail trail = new Trail()
+            {
+                ConditionDate = "3 MAR"
+            };
+            trail.ConditionDate = "3 MAR";
+
+            Assert.Equal("3 MAR", trail.ConditionDate);
+        }
     }
 }
