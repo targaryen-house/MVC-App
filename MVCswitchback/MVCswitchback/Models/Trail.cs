@@ -18,7 +18,6 @@ namespace MVCswitchback.Models
         public int TrailID { get; set; }
         [JsonProperty("ID")]
         public int ID { get; set; }
-
         [JsonProperty("name")]
         [DataType(DataType.Text)]
         public string Name { get; set; }
