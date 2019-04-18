@@ -51,7 +51,7 @@ namespace MVCswitchback.Controllers
             TrailDetails trailDetails = new TrailDetails()
             {
                 Trail = trail,
-                UserReviews = userReviews,
+                UserComments = userReviews,
                 Weather = weather
             };
 

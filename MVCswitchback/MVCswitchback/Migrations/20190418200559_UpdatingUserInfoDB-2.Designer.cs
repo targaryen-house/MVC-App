@@ -3,14 +3,16 @@ using MVCswitchback.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVCswitchback.Migrations
 {
     [DbContext(typeof(SwitchbackDbContext))]
-    partial class SwitchbackDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190418200559_UpdatingUserInfoDB-2")]
+    partial class UpdatingUserInfoDB2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,48 +108,6 @@ namespace MVCswitchback.Migrations
                             TrailID = 1,
                             UserComment = "The trail was fantastic and the views were amazing.",
                             UserInfoID = 5
-                        },
-                        new
-                        {
-                            ID = 11,
-                            TrailID = 2,
-                            UserComment = "My trailmates were all slow, but the trail was great.",
-                            UserInfoID = 1
-                        },
-                        new
-                        {
-                            ID = 12,
-                            TrailID = 2,
-                            UserComment = "I don't like physical activity...",
-                            UserInfoID = 2
-                        },
-                        new
-                        {
-                            ID = 13,
-                            TrailID = 3,
-                            UserComment = "My trailmates were all slow, but the trail was great.",
-                            UserInfoID = 1
-                        },
-                        new
-                        {
-                            ID = 14,
-                            TrailID = 3,
-                            UserComment = "I don't like physical activity...",
-                            UserInfoID = 2
-                        },
-                        new
-                        {
-                            ID = 15,
-                            TrailID = 4,
-                            UserComment = "My trailmates were all slow, but the trail was great.",
-                            UserInfoID = 1
-                        },
-                        new
-                        {
-                            ID = 16,
-                            TrailID = 4,
-                            UserComment = "I don't like physical activity...",
-                            UserInfoID = 2
                         });
                 });
 
