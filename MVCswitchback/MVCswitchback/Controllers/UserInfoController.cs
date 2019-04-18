@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 using MVCswitchback.Data;
 using MVCswitchback.Models;
 using Microsoft.EntityFrameworkCore;
+using MVCswitchback.Models.Interfaces;
 
 namespace MVCswitchback.Controllers
 {
     public class UserInfoController : Controller
     {
-        private readonly SwitchbackDbContext _context;
+        private readonly IUserInfo _users;
 
-        public UserInfoController(SwitchbackDbContext context)
+        public UserInfoController(IUserInfo users)
         {
-            _context = context;
+            _users = users;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.UserInfo.ToListAsync());
+            List<UserInfo> users = await _users.GetAllUsers(searchString);
+
+            return View(users);
         }
 
         /// <summary>
@@ -28,19 +31,21 @@ namespace MVCswitchback.Controllers
         /// </summary>
         /// <param name="id"> the id of UserInfo </param>
         /// <returns> information of selected user </returns>
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
+            if (id < 1)
             {
                 return NotFound();
             }
-            var userInfo = await _context.UserInfo
-                    .FirstOrDefaultAsync(m => m.ID == id);
-            if (userInfo == null)
+
+            var user = await _users.GetUser(id);
+
+            if (user == null)
             {
                 return NotFound();
             }
-            return View(userInfo);
+
+            return View(user);
         }
 
         /// <summary>
@@ -63,8 +68,7 @@ namespace MVCswitchback.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(userInfo);
-                await _context.SaveChangesAsync();
+                await _users.AddUser(userInfo);
                 return RedirectToAction(nameof(Index));
             }
             return View(userInfo);
@@ -75,19 +79,20 @@ namespace MVCswitchback.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns> Edit page </returns>
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
+            if (id < 1)
             {
                 return NotFound();
             }
 
-            var userInfo = await _context.UserInfo.FindAsync(id);
-            if (userInfo == null)
+            var user = await _users.GetUser(id);
+
+            if (user == null)
             {
                 return NotFound();
             }
-            return View(userInfo);
+            return View(user);
         }
 
         /// <summary>
@@ -107,8 +112,7 @@ namespace MVCswitchback.Controllers
             {
                 try
                 {
-                    _context.Update(userInfo);
-                    await _context.SaveChangesAsync();
+                    await _users.UpdateUser(userInfo);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -126,26 +130,25 @@ namespace MVCswitchback.Controllers
             return View(userInfo);
         }
 
-         /// <summary>
-         /// Directs to delete page
-         /// </summary>
-         /// <param name="id"></param>
-         /// <returns> delete confirmation </returns>
-        public async Task<IActionResult> Delete(int? id)
+        /// <summary>
+        /// Directs to delete page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> delete confirmation </returns>
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
+            if (id < 1)
             {
                 return NotFound();
             }
 
-            var userInfo = await _context.UserInfo
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var user = await _users.GetUser(id);
 
-            if (userInfo == null)
+            if (user == null)
             {
                 return NotFound();
             }
-            return View(userInfo);
+            return View(user);
         }
 
         /// <summary>
@@ -157,15 +160,19 @@ namespace MVCswitchback.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            var userInfo = await _context.UserInfo.FindAsync(id);
-            _context.UserInfo.Remove(userInfo);
-            await _context.SaveChangesAsync();
+            var user = await _users.GetUser(id);
+
+            if (user != null)
+            {
+                _users.DeleteUser(user);
+            }
+
             return RedirectToAction(nameof(Index));
         }
-        
+
         private bool UserInfoExists(int id)
         {
-            return _context.UserInfo.Any(e => e.ID == id);
+            return _users.UserExists(id);
         }
     }
 }

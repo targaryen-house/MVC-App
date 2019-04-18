@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Configuration;
 using MVCswitchback.Models;
 using MVCswitchback.Models.Interfaces;
 using MVCswitchback.Models.ViewModels;
@@ -17,10 +18,12 @@ namespace MVCswitchback.Controllers
     public class TrailController : Controller
     {
         private readonly ITrailManager _trail;
+        private readonly IConfiguration _configuration;
 
-        public TrailController(ITrailManager trail)
+        public TrailController(ITrailManager trail, IConfiguration configuration)
         {
             _trail = trail;
+            _configuration = configuration;
         }
         
         public async Task<IActionResult> Index(string searchString)
@@ -43,12 +46,12 @@ namespace MVCswitchback.Controllers
         {
             Trail trail = await BackendAPI.GetTrailByID(id);
             var userReviews = await _trail.GetUserReviews(id);
-            Weather weather = await BackendAPI.GetWeather(trail.Latitude, trail.Longitude);
+            Weather weather = await BackendAPI.GetWeather(trail.Latitude, trail.Longitude, _configuration);
 
             TrailDetails trailDetails = new TrailDetails()
             {
                 Trail = trail,
-                UserReviews = userReviews,
+                UserComments = userReviews,
                 Weather = weather
             };
 
@@ -65,7 +68,7 @@ namespace MVCswitchback.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("")] Trail trail)
+        public async Task<IActionResult> Create([Bind("Name, Summary, Difficulty, Location, ImgMedium, Length, Ascent, Descent, High, Low, Longitude, Latitude, ConditionStatus, ConditionDetails, ConditionDate")] Trail trail)
         {
             await BackendAPI.CreateTrailAsync(trail);
             Trail returnTrail = await BackendAPI.GetTrailByID(trail.ID);
