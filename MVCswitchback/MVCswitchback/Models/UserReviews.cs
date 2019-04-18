@@ -13,7 +13,6 @@ namespace MVCswitchback.Models
         public int TrailID { get; set; }
         public string UserComment { get; set; }
 
-        [NotMapped]
-        public ICollection<UserInfo> UserInfo { get; set; }
+        public UserInfo UserInfo { get; set; }
     }
 }

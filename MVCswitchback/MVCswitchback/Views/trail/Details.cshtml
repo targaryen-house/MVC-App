@@ -1,30 +1,44 @@
-﻿@model MVCswitchback.Models.Trail
+﻿@model MVCswitchback.Models.ViewModels.TrailDetails
 @{
     ViewData["Title"] = "Details";
     Layout = "_Layout";
 }
 
 <div class="container">
-    <h1>@Model.Name</h1>
-    <p>@Model.Location</p>
-    <img src="@Model.ImgMedium" />
-    <div class="d-sm-flex align-items-start flex-row border border-primary rounded" style="height: 125px;">
-        <p>Quick details pane</p>
-        <p>Type: @Model.Type</p>
-        <p>Difficulty: @Model.Difficulty</p>
-        <p>Stars: @Model.Stars</p>
+    <h1>@Model.Trail.Name</h1>
+    <p>@Model.Trail.Location</p>
+    <img src="@Model.Trail.ImgMedium" />
+    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 150px;">
+        <h6>Quick details pane</h6>
+        @*<p>Type: @Model.Trail.Type</p>*@
+        <p>Difficulty: @Model.Trail.Difficulty</p>
+        <p>Stars: @Model.Trail.Stars</p>
+        <p>Weather: @Model.Weather.Summary</p>
     </div>
-    <div class="d-sm-flex align-items-start flex-row border border-primary rounded" style="height: 125px;">
-        <p>Length: @Model.Length</p>
-        <p>Ascent: @Model.Ascent</p>
-        <p>Descent: @Model.Descent</p>
-        <p>High: @Model.High</p>
-        <p>Low: @Model.Low</p>
+    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 250px;">
+        <h6>Trail Stats</h6>
+        <p>Length: @Model.Trail.Length</p>
+        <p>Ascent: @Model.Trail.Ascent</p>
+        <p>Descent: @Model.Trail.Descent</p>
+        <p>High: @Model.Trail.High</p>
+        <p>Low: @Model.Trail.Low</p>
     </div>
-    <div class="d-sm-flex align-items-start flex-row border border-primary rounded" style="height: 125px;">
-        <p>Condition: @Model.ConditionStatus</p>
-        <p>Condition Date: @Model.ConditionDate</p>
-        <p>Condition Details: @Model.ConditionDetails</p>
+    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 150px;">
+        <h6>Conditions:</h6>
+        <p>@Model.Trail.ConditionStatus</p>
+        <p>Condition Date: @Model.Trail.ConditionDate</p>
+        <p>Condition Details: @Model.Trail.ConditionDetails</p>
     </div>
-        <p>@Model.Summary</p>
+    <h5>@Model.Trail.Summary</h5>
 </div>
+
+@foreach (var item in Model.UserReviews)
+{
+    <div class="container">
+        <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 125px;">
+            <h6>Author: @item.UserID</h6>
+            <p>@item.UserComment</p>
+        </div>
+    </div>
+}
+
