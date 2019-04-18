@@ -8,14 +8,14 @@
     <h1>@Model.Trail.Name</h1>
     <p>@Model.Trail.Location</p>
     <img src="@Model.Trail.ImgMedium" />
-    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 125px;">
+    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 150px;">
         <h6>Quick details pane</h6>
         @*<p>Type: @Model.Trail.Type</p>*@
         <p>Difficulty: @Model.Trail.Difficulty</p>
         <p>Stars: @Model.Trail.Stars</p>
         <p>Weather: @Model.Weather.Summary</p>
     </div>
-    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 125px;">
+    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 250px;">
         <h6>Trail Stats</h6>
         <p>Length: @Model.Trail.Length</p>
         <p>Ascent: @Model.Trail.Ascent</p>
@@ -23,7 +23,7 @@
         <p>High: @Model.Trail.High</p>
         <p>Low: @Model.Trail.Low</p>
     </div>
-    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 125px;">
+    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 150px;">
         <h6>Conditions:</h6>
         <p>@Model.Trail.ConditionStatus</p>
         <p>Condition Date: @Model.Trail.ConditionDate</p>
@@ -36,7 +36,7 @@
 {
     <div class="container">
         <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 125px;">
-            <h6>Author: @item.UserInfo.UserName</h6>
+            <h6>Author: @item.UserID</h6>
             <p>@item.UserComment</p>
         </div>
     </div>

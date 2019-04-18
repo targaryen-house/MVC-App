@@ -21,7 +21,6 @@ namespace MVCswitchback.Models.Services
         {
             var list = await _context.UserReviews
                                .Where(x => x.TrailID == id)
-                               .Include(u => u.UserInfo.UserName)
                                .ToListAsync();
 
             //var list = from l in _context.UserReviews
