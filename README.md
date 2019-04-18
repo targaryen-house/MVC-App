@@ -148,6 +148,9 @@ Our web app will connect to a SQL database with two tables.  The first table wil
 
 - Example call From our API:
 
+  - *Call to be made*: https://switchbackapi.azurewebsites.net/api/bing?query=Seattle
+
+*Returned data*
 - {
    -        "TrailID": 3,        
    -        "id": 7013499,
