@@ -9,26 +9,26 @@ namespace WebAppTests
     public class WeatherModelTests
     {
         [Fact]
-        public void CanGetWeathersWeather()
+        public void CanGetWeathersSummary()
         {
-            WeatherModel weather = new WeatherModel()
+            Weather weather = new Weather()
             {
-                Weather = "ITS SO NICE AND SUNNY AND WONDERFUL"
+                Summary = "ITS SO NICE AND SUNNY AND WONDERFUL"
             };
 
-            Assert.Equal("ITS SO NICE AND SUNNY AND WONDERFUL", weather.Weather);
+            Assert.Equal("ITS SO NICE AND SUNNY AND WONDERFUL", weather.Summary);
         }
 
         [Fact]
-        public void CanSetWeathersWeather()
+        public void CanSetWeathersSummary()
         {
-            WeatherModel weather = new WeatherModel()
+            Weather weather = new Weather()
             {
-                Weather = "ITS SO NICE AND SUNNY AND WONDERFUL"
+                Summary = "ITS SO NICE AND SUNNY AND WONDERFUL"
             };
-            weather.Weather = "ITS RAINING SIDEWAYS";
+            weather.Summary = "ITS RAINING SIDEWAYS";
 
-            Assert.Equal("ITS RAINING SIDEWAYS", weather.Weather);
+            Assert.Equal("ITS RAINING SIDEWAYS", weather.Summary);
         }
     }
 }
