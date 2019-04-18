@@ -13,19 +13,21 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">@item.Name</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Length: @item.Length mi</h6>
-                    <p class="card-text">@item.Summary. </p>
-                    <a asp-action="Details" asp-route-id="@item.TrailID">Details</a>
+    <a asp-action="Details" asp-route-id="@item.TrailID" class="thumbnail">
+        <div class="row">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Length: @item.Length mi</h6>
+                        <p class="card-text">@item.Summary. </p>
+                        <p>Details</p>
+                    </div>
+                    <img class="card-img-bottom" src="@item.ImgSmallMed" alt="Bologna">
                 </div>
-                <img class="card-img-bottom" src="@item.ImgSmallMed" alt="Bologna">
             </div>
         </div>
-    </div>
+    </a>
 </div>
 
 

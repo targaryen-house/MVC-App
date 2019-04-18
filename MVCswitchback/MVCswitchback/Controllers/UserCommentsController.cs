@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MVCswitchback.Controllers
 {
-    public class UserReviewsController : Controller
+    public class UserCommentsController : Controller
     {
         private readonly SwitchbackDbContext _context;
 
-        public UserReviewsController(SwitchbackDbContext context)
+        public UserCommentsController(SwitchbackDbContext context)
         {
             _context = context;
         }
@@ -59,7 +59,7 @@ namespace MVCswitchback.Controllers
         /// <returns> created review </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind(" ID, UserID, TrailID, UserComment")] UserReviews userReview)
+        public async Task<IActionResult> Create([Bind(" ID, UserID, TrailID, UserComment")] UserComments userReview)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace MVCswitchback.Controllers
         /// <param name="id"></param>
         /// <param name="userReview"></param>
         /// <returns> edited review</returns>
-        public async Task<IActionResult> Edit(int id, [Bind(" ID, UserID, TrailID, UserComment")] UserReviews userReview)
+        public async Task<IActionResult> Edit(int id, [Bind(" ID, UserID, TrailID, UserComment")] UserComments userReview)
         {
             if (id != userReview.ID)
             {

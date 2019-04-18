@@ -58,71 +58,71 @@ namespace MVCswitchback.Data
                     LastName = "Kelly"
                 });
 
-            modelBuilder.Entity<UserReviews>().HasData(
-                new UserReviews
+            modelBuilder.Entity<UserComments>().HasData(
+                new UserComments
                 {
                     ID = 1,
                     UserID = 1,
                     TrailID = 7013499,
                     UserComment = "My trailmates were all slow, but the trail was great."
                 },
-                new UserReviews
+                new UserComments
                 {
                     ID = 2,
                     UserID = 2,
                     TrailID = 7013499,
                     UserComment = "I don't like physical activity..."
                 },
-                new UserReviews
+                new UserComments
                 {
                     ID = 3,
                     UserID = 3,
                     TrailID = 7013499,
                     UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle."
                 },
-                new UserReviews
+                new UserComments
                 {
                     ID = 4,
                     UserID = 4,
                     TrailID = 7013499,
                     UserComment = "It was ok."
                 },
-                new UserReviews
+                new UserComments
                 {
                     ID = 5,
                     UserID = 5,
                     TrailID = 7013499,
                     UserComment = "The trail was fantastic and the views were amazing."
                 },
-                new UserReviews
+                new UserComments
                 {
                     ID = 6,
                     UserID = 1,
                     TrailID = 1,
                     UserComment = "My trailmates were all slow, but the trail was great."
                 },
-                new UserReviews
+                new UserComments
                 {
                     ID = 7,
                     UserID = 2,
                     TrailID = 1,
                     UserComment = "I don't like physical activity..."
                 },
-                new UserReviews
+                new UserComments
                 {
                     ID = 8,
                     UserID = 3,
                     TrailID = 1,
                     UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle."
                 },
-                new UserReviews
+                new UserComments
                 {
                     ID = 9,
                     UserID = 4,
                     TrailID = 1,
                     UserComment = "It was ok."
                 },
-                new UserReviews
+                new UserComments
                 {
                     ID = 10,
                     UserID = 5,
@@ -133,6 +133,6 @@ namespace MVCswitchback.Data
         }
 
         public DbSet<UserInfo> UserInfo { get; set; }
-        public DbSet<UserReviews> UserReviews { get; set; }
+        public DbSet<UserComments> UserReviews { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MVCswitchback.Models
 {
-    public class UserReviews
+    public class UserComments
     {
         public int ID { get; set; }
         public int UserID { get; set; }

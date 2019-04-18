@@ -32,11 +32,13 @@
     <h5>@Model.Trail.Summary</h5>
 </div>
 
+
+
 @foreach (var item in Model.UserReviews)
 {
     <div class="container">
         <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 125px;">
-            <h6>Author: @item.UserID</h6>
+            <h6>Author: @item.UserInfo.UserName</h6>
             <p>@item.UserComment</p>
         </div>
     </div>

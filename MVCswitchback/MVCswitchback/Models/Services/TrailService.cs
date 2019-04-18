@@ -17,17 +17,14 @@ namespace MVCswitchback.Models.Services
             _context = context;
         }
 
-        public async Task<List<UserReviews>> GetUserReviews(int id)
+        public async Task<List<UserComments>> GetUserReviews(int id)
         {
             var list = await _context.UserReviews
                                .Where(x => x.TrailID == id)
+                               .Include(u => u.UserInfo)
+                               .ThenInclude(u => u.UserName)
                                .ToListAsync();
 
-            //var list = from l in _context.UserReviews
-            //           where (id == l.TrailID)
-            //           select l;
-
-            
             return  list;
         }
 
