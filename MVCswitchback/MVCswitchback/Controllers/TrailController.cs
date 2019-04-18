@@ -38,7 +38,7 @@ namespace MVCswitchback.Controllers
         /// Displays details of Trails
         /// </summary>
         /// <param name="id"> the id of the trail </param>
-        /// <returns> the details of a chose trail </returns>
+        /// <returns> returns the details of a chosen trail </returns>
         public async Task<IActionResult> Details(int id)
         {
             Trail trail = await BackendAPI.GetTrailByID(id);
@@ -56,9 +56,9 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// directs to the creation of a new trail
+        /// Directs to the creation of a new trail
         /// </summary>
-        /// <returns> the new trail on the list </returns>
+        /// <returns> Returns the view to create a new trail </returns>
         public IActionResult Create()
         {
             return View();
@@ -73,10 +73,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// Edits the selected trail
+        /// Edits the a selected trail
         /// </summary>
-        /// <param name="trail"> declaration of trail </param>
-        /// <returns> the edited trail </returns>
+        /// <param name="trail"> id of the trail </param>
+        /// <returns> Returns the Edited trail </returns>
         public async Task<IActionResult> Edit(Trail trail)
         {
             Trail returnTrail = await BackendAPI.UpdateTrailAsync(trail);
@@ -84,9 +84,9 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// Deletes selected trail
+        /// Deletes a selected trail
         /// </summary>
-        /// <returns> deletion confirmation </returns>
+        /// <returns> Returns deletion confirmation </returns>
         public async Task<IActionResult> Delete(int id)
         {
             var status =  await BackendAPI.DeleteTrailAsync(id);

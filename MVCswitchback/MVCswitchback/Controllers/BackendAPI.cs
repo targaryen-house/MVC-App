@@ -66,10 +66,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// Creates trail async
+        /// Creates trail and posts it to the page
         /// </summary>
-        /// <param name="trail"> a new created trail </param>
-        /// <returns> Returns the location </returns>
+        /// <param name="trail"> a newly created trail </param>
+        /// <returns> Returns the location and page of the newly created trail </returns>
         public static async Task<Uri> CreateTrailAsync(Trail trail)
         {
             HttpClient client = new HttpClient();
@@ -80,10 +80,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        ///  Updates a particular trail
+        ///  Updates a selected trail
         /// </summary>
-        /// <param name="trail"> a trail </param>
-        /// <returns> updated trail </returns>
+        /// <param name="trail"> a trail Identifier </param>
+        /// <returns> returns an updated trail </returns>
         public static async Task<Trail> UpdateTrailAsync(Trail trail)
         {
             HttpClient client = new HttpClient();
