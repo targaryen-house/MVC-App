@@ -7,7 +7,6 @@ namespace MVCswitchback.Models
 {
     public class WeatherModel
     {
-
-        public string Weather { get; set; }
+       public string Weather { get; set; }
     }
 }
