@@ -89,6 +89,41 @@ namespace MVCswitchback.Data
                     UserID = 5,
                     TrailID = 7013499,
                     UserComment = "The trail was fantastic and the views were amazing."
+                },
+                new UserReviews
+                {
+                    ID = 6,
+                    UserID = 1,
+                    TrailID = 1,
+                    UserComment = "My trailmates were all slow, but the trail was great."
+                },
+                new UserReviews
+                {
+                    ID = 7,
+                    UserID = 2,
+                    TrailID = 1,
+                    UserComment = "I don't like physical activity..."
+                },
+                new UserReviews
+                {
+                    ID = 8,
+                    UserID = 3,
+                    TrailID = 1,
+                    UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle."
+                },
+                new UserReviews
+                {
+                    ID = 9,
+                    UserID = 4,
+                    TrailID = 1,
+                    UserComment = "It was ok."
+                },
+                new UserReviews
+                {
+                    ID = 10,
+                    UserID = 5,
+                    TrailID = 1,
+                    UserComment = "The trail was fantastic and the views were amazing."
                 });
 
         }

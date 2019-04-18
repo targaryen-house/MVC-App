@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCswitchback.Migrations
 {
     [DbContext(typeof(SwitchbackDbContext))]
-    [Migration("20190418022212_TestingNewNavPropsAgainAgain")]
-    partial class TestingNewNavPropsAgainAgain
+    [Migration("20190418160749_AddsSeedsForID1")]
+    partial class AddsSeedsForID1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -128,6 +128,41 @@ namespace MVCswitchback.Migrations
                         {
                             ID = 5,
                             TrailID = 7013499,
+                            UserComment = "The trail was fantastic and the views were amazing.",
+                            UserID = 5
+                        },
+                        new
+                        {
+                            ID = 6,
+                            TrailID = 1,
+                            UserComment = "My trailmates were all slow, but the trail was great.",
+                            UserID = 1
+                        },
+                        new
+                        {
+                            ID = 7,
+                            TrailID = 1,
+                            UserComment = "I don't like physical activity...",
+                            UserID = 2
+                        },
+                        new
+                        {
+                            ID = 8,
+                            TrailID = 1,
+                            UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle.",
+                            UserID = 3
+                        },
+                        new
+                        {
+                            ID = 9,
+                            TrailID = 1,
+                            UserComment = "It was ok.",
+                            UserID = 4
+                        },
+                        new
+                        {
+                            ID = 10,
+                            TrailID = 1,
                             UserComment = "The trail was fantastic and the views were amazing.",
                             UserID = 5
                         });
