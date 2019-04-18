@@ -149,32 +149,16 @@ Our web app will connect to a SQL database with two tables.  The first table wil
 - Example call From our API:
 
   - *Call to be made*: https://switchbackapi.azurewebsites.net/api/bing?query=Seattle
-
 *Returned data*
-- {
-   -        "TrailID": 3,        
-   -        "id": 7013499,
-   -        "name": "Discovery Park and Lighthouse Loop",
-   -         "type": "Featured Hike",
-   -         "summary": "An easy hike with views of Mt. Rainier from the West Point Lighthouse.",
-   -         "difficulty": "greenBlue",
-   -         "stars": 4.2,
-   -         "starVotes": 19,
-   -         "location": "Seattle, Washington",
-   -         "url": "https://www.hikingproject.com/trail/7013499/discovery-park-and-lighthouse-loop",
-   -         "imgSqSmall": "https://cdn-files.apstatic.com/hike/7055441_sqsmall_1548117690.jpg",
-   -         "imgSmall": "https://cdn-files.apstatic.com/hike/7055441_small_1548117690.jpg",
-   -         "imgSmallMed": "https://cdn-files.apstatic.com/hike/7055441_smallMed_1548117690.jpg",
-   -         "imgMedium": "https://cdn-files.apstatic.com/hike/7055441_medium_1548117690.jpg",
-   -         "length": 4,
-   -         "ascent": 406,
-   -         "descent": -405,
-   -         "high": 335,
-   -        "low": 10,
-   -         "longitude": -122.4081,
-   -         "latitude": 47.6586,
-   -         "conditionStatus": "All Clear",
-   -         "conditionDetails": "Some Mud",
-   -         "conditionDate": "2019-01-19 09:34:53",
-   -         "userRatings": null
-   -     },
+![Image 1](Assets/LocationSearchResponse.PNG)
+
+  - *Call to be made*: https://localhost:44308/api/Trail/1
+*Returned data*
+![Image 1](Assets/SearchTrail.PNG)
+
+Models
+
+![Image 1](Assets/TrailModel.PNG)
+
+![Image 1](Assets/UserRatingModel.PNG)
+
