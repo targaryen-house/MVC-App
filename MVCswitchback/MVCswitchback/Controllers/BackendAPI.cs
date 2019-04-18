@@ -21,7 +21,7 @@ namespace MVCswitchback.Controllers
 
             // Call Hikingproject API
             client.BaseAddress = new Uri("https://www.hikingproject.com");
-            var response = client.GetAsync($"/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200426075-bb9e04f2cd93ffc60dd2762d4f81ff2b").Result;
+            var response = client.GetAsync($"/data/get-trails?lat={lat}&lon={lon}&maxDistance=10&key=200426075-bb9e04f2cd93ffc60dd2762d4f81ff2b").Result;
             response.EnsureSuccessStatusCode();
 
             var stringResult = await response.Content.ReadAsStringAsync();
@@ -104,11 +104,6 @@ namespace MVCswitchback.Controllers
                 return rawWeather;
             }
 
-        }
-
-        public static async Task<List<UserReviews>> GetReviews(int id)
-        {
-            GetUserReviews
         }
 
     }

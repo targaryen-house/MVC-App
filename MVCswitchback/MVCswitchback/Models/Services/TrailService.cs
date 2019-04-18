@@ -8,18 +8,22 @@ using System.Threading.Tasks;
 
 namespace MVCswitchback.Models.Services
 {
-    public class UserReviewsService : IUserReviews
+    public class TrailService : ITrailManager
     {
         private readonly SwitchbackDbContext _context;
 
-        public UserReviewsService(SwitchbackDbContext context)
+        public TrailService(SwitchbackDbContext context)
         {
             _context = context;
         }
 
         public async Task<List<UserReviews>> GetUserReviews(int id)
         {
-            var list = _context.UserReviews.Where(x => x.TrailID == id);
+            //var list = _context.UserReviews.Where(x => x.TrailID == id);
+
+            var list = from l in _context.UserReviews
+                       where (id == l.TrailID)
+                       select l;
 
             return await list.ToListAsync();
         }

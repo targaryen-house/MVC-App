@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MVCswitchback.Models.Interfaces
 {
-    public interface IUserReviews
+    public interface ITrailManager
     {
         // Get all User Reviews for a given trail by trail ID
         Task<List<UserReviews>> GetUserReviews(int id);

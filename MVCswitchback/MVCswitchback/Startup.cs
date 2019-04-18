@@ -10,12 +10,14 @@ using Microsoft.EntityFrameworkCore;
 using MVCswitchback.Data;
 using Microsoft.Extensions.Configuration;
 using MVCswitchback.Models;
+using MVCswitchback.Models.Services;
+using MVCswitchback.Models.Interfaces;
 
 namespace MVCswitchback
 {
     public class Startup
     {
-        public IConfiguration Configuration{ get; }
+        public IConfiguration Configuration { get; }
         public IHostingEnvironment Environment { get; }
 
         public Startup(IConfiguration configuration, IHostingEnvironment environment)
@@ -36,6 +38,8 @@ namespace MVCswitchback
 
             services.AddDbContext<SwitchbackDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            services.AddScoped<ITrailManager, TrailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
