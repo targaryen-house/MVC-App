@@ -1,4 +1,5 @@
-﻿using MVCswitchback.Models;
+﻿using Microsoft.Extensions.Configuration;
+using MVCswitchback.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -51,16 +52,6 @@ namespace MVCswitchback.Controllers
             Trail rawTrail = JsonConvert.DeserializeObject<Trail>(stringResult);
             Trail singletrail = rawTrail;
             return singletrail;
-
-            // Call our API
-            //client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
-            //var response = client.GetAsync($"api/trails/{id}").Result;
-            //response.EnsureSuccessStatusCode();
-
-            //var stringResult = await response.Content.ReadAsStringAsync();
-            //Rootobject rawTrail = JsonConvert.DeserializeObject<Rootobject>(stringResult);
-            //Trail singletrail = rawTrail.Trails[0];
-            //return singletrail;
         }
 
         /// <summary>
@@ -72,8 +63,8 @@ namespace MVCswitchback.Controllers
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
-            HttpResponseMessage response = await client.PostAsJsonAsync("api/trails", trail);
-            response.EnsureSuccessStatusCode();
+            HttpResponseMessage response = await client.PostAsJsonAsync("api/trail", trail);
+            
             return response.Headers.Location;
         }
 
@@ -86,7 +77,7 @@ namespace MVCswitchback.Controllers
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
-            HttpResponseMessage response = await client.PutAsJsonAsync($"api/trails/{trail.ID}", trail);
+            HttpResponseMessage response = await client.PutAsJsonAsync($"api/trail/{trail.ID}", trail);
             response.EnsureSuccessStatusCode();
 
             trail = await response.Content.ReadAsAsync<Trail>();
@@ -102,16 +93,18 @@ namespace MVCswitchback.Controllers
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
-            HttpResponseMessage response = await client.DeleteAsync($"api/trails/{id}");
+            HttpResponseMessage response = await client.DeleteAsync($"api/trail/{id}");
             return response.StatusCode;
         }
+      
+        public static async Task<Weather> GetWeather(float lat, float lon, IConfiguration configuration)
 
-        public static async Task<Weather> GetWeather(float lat, float lon)
         {
             using (HttpClient client = new HttpClient())
             {
+                var key = ($"/data/2.5/weather?lat={lat}&lon={lon}&appid={configuration["OpenAPIKey"]}");
                 client.BaseAddress = new Uri("http://api.openweathermap.org");
-                var response = await client.GetAsync($"/data/2.5/weather?lat={lat}&lon={lon}&appid=cf533494dceec77754749475e189b600");
+                var response = await client.GetAsync(key);
                 response.EnsureSuccessStatusCode();
 
                 var stringResult = await response.Content.ReadAsStringAsync();
