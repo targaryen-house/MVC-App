@@ -13,6 +13,6 @@ namespace MVCswitchback.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public ICollection<UserComments> UserReviews { get; set; }
+        public ICollection<UserComments> UserComments { get; set; }
     }
 }

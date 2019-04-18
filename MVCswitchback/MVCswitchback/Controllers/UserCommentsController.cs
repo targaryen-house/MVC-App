@@ -20,7 +20,7 @@ namespace MVCswitchback.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.UserReviews.ToListAsync());
+            return View(await _context.UserComments.ToListAsync());
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace MVCswitchback.Controllers
             {
                 return NotFound();
             }
-            var userReview = await _context.UserReviews
+            var userReview = await _context.UserComments
                     .FirstOrDefaultAsync(m => m.ID == id);
             if (userReview == null)
             {
@@ -55,19 +55,19 @@ namespace MVCswitchback.Controllers
         /// <summary>
         /// Creates a new user review
         /// </summary>
-        /// <param name="userReview"></param>
+        /// <param name="userComments"></param>
         /// <returns> created review </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind(" ID, UserID, TrailID, UserComment")] UserComments userReview)
+        public async Task<IActionResult> Create([Bind(" ID, UserID, TrailID, UserComment")] UserComments userComments)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(userReview);
+                _context.Add(userComments);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(userReview);
+            return View(userComments);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace MVCswitchback.Controllers
                 return NotFound();
             }
 
-            var userReview = await _context.UserReviews.FindAsync(id);
+            var userReview = await _context.UserComments.FindAsync(id);
             if (userReview == null)
             {
                 return NotFound();
@@ -94,11 +94,11 @@ namespace MVCswitchback.Controllers
         /// Edits a user review 
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="userReview"></param>
+        /// <param name="userComments"></param>
         /// <returns> edited review</returns>
-        public async Task<IActionResult> Edit(int id, [Bind(" ID, UserID, TrailID, UserComment")] UserComments userReview)
+        public async Task<IActionResult> Edit(int id, [Bind(" ID, UserID, TrailID, UserComment")] UserComments userComments)
         {
-            if (id != userReview.ID)
+            if (id != userComments.ID)
             {
                 return NotFound();
             }
@@ -107,12 +107,12 @@ namespace MVCswitchback.Controllers
             {
                 try
                 {
-                    _context.Update(userReview);
+                    _context.Update(userComments);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserReviewExists(userReview.ID))
+                    if (!UserReviewExists(userComments.ID))
                     {
                         return NotFound();
                     }
@@ -123,7 +123,7 @@ namespace MVCswitchback.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(userReview);
+            return View(userComments);
         }
 
 
@@ -139,7 +139,7 @@ namespace MVCswitchback.Controllers
                 return NotFound();
             }
 
-            var userReview = await _context.UserReviews
+            var userReview = await _context.UserComments
                 .FirstOrDefaultAsync(m => m.ID == id);
 
             if (userReview == null)
@@ -158,15 +158,15 @@ namespace MVCswitchback.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            var userReview = await _context.UserReviews.FindAsync(id);
-            _context.UserReviews.Remove(userReview);
+            var userReview = await _context.UserComments.FindAsync(id);
+            _context.UserComments.Remove(userReview);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserReviewExists(int id)
         {
-            return _context.UserReviews.Any(e => e.ID == id);
+            return _context.UserComments.Any(e => e.ID == id);
         }
     }
 }

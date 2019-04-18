@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCswitchback.Migrations
 {
     [DbContext(typeof(SwitchbackDbContext))]
-    [Migration("20190418160749_AddsSeedsForID1")]
-    partial class AddsSeedsForID1
+    [Migration("20190418195956_UpdatingUserInfoDB")]
+    partial class UpdatingUserInfoDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,95 @@ namespace MVCswitchback.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("MVCswitchback.Models.UserComments", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("TrailID");
+
+                    b.Property<string>("UserComment");
+
+                    b.Property<int>("UserInfoID");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("UserComments");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            TrailID = 7013499,
+                            UserComment = "My trailmates were all slow, but the trail was great.",
+                            UserInfoID = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            TrailID = 7013499,
+                            UserComment = "I don't like physical activity...",
+                            UserInfoID = 2
+                        },
+                        new
+                        {
+                            ID = 3,
+                            TrailID = 7013499,
+                            UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle.",
+                            UserInfoID = 3
+                        },
+                        new
+                        {
+                            ID = 4,
+                            TrailID = 7013499,
+                            UserComment = "It was ok.",
+                            UserInfoID = 4
+                        },
+                        new
+                        {
+                            ID = 5,
+                            TrailID = 7013499,
+                            UserComment = "The trail was fantastic and the views were amazing.",
+                            UserInfoID = 5
+                        },
+                        new
+                        {
+                            ID = 6,
+                            TrailID = 1,
+                            UserComment = "My trailmates were all slow, but the trail was great.",
+                            UserInfoID = 1
+                        },
+                        new
+                        {
+                            ID = 7,
+                            TrailID = 1,
+                            UserComment = "I don't like physical activity...",
+                            UserInfoID = 2
+                        },
+                        new
+                        {
+                            ID = 8,
+                            TrailID = 1,
+                            UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle.",
+                            UserInfoID = 3
+                        },
+                        new
+                        {
+                            ID = 9,
+                            TrailID = 1,
+                            UserComment = "It was ok.",
+                            UserInfoID = 4
+                        },
+                        new
+                        {
+                            ID = 10,
+                            TrailID = 1,
+                            UserComment = "The trail was fantastic and the views were amazing.",
+                            UserInfoID = 5
+                        });
+                });
 
             modelBuilder.Entity("MVCswitchback.Models.UserInfo", b =>
                 {
@@ -31,9 +120,13 @@ namespace MVCswitchback.Migrations
 
                     b.Property<string>("LastName");
 
+                    b.Property<int?>("UserCommentsID");
+
                     b.Property<string>("UserName");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("UserCommentsID");
 
                     b.ToTable("UserInfo");
 
@@ -75,104 +168,11 @@ namespace MVCswitchback.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MVCswitchback.Models.UserReviews", b =>
+            modelBuilder.Entity("MVCswitchback.Models.UserInfo", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("TrailID");
-
-                    b.Property<string>("UserComment");
-
-                    b.Property<int>("UserID");
-
-                    b.Property<int?>("UserInfoID");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("UserInfoID");
-
-                    b.ToTable("UserReviews");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            TrailID = 7013499,
-                            UserComment = "My trailmates were all slow, but the trail was great.",
-                            UserID = 1
-                        },
-                        new
-                        {
-                            ID = 2,
-                            TrailID = 7013499,
-                            UserComment = "I don't like physical activity...",
-                            UserID = 2
-                        },
-                        new
-                        {
-                            ID = 3,
-                            TrailID = 7013499,
-                            UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle.",
-                            UserID = 3
-                        },
-                        new
-                        {
-                            ID = 4,
-                            TrailID = 7013499,
-                            UserComment = "It was ok.",
-                            UserID = 4
-                        },
-                        new
-                        {
-                            ID = 5,
-                            TrailID = 7013499,
-                            UserComment = "The trail was fantastic and the views were amazing.",
-                            UserID = 5
-                        },
-                        new
-                        {
-                            ID = 6,
-                            TrailID = 1,
-                            UserComment = "My trailmates were all slow, but the trail was great.",
-                            UserID = 1
-                        },
-                        new
-                        {
-                            ID = 7,
-                            TrailID = 1,
-                            UserComment = "I don't like physical activity...",
-                            UserID = 2
-                        },
-                        new
-                        {
-                            ID = 8,
-                            TrailID = 1,
-                            UserComment = "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle.",
-                            UserID = 3
-                        },
-                        new
-                        {
-                            ID = 9,
-                            TrailID = 1,
-                            UserComment = "It was ok.",
-                            UserID = 4
-                        },
-                        new
-                        {
-                            ID = 10,
-                            TrailID = 1,
-                            UserComment = "The trail was fantastic and the views were amazing.",
-                            UserID = 5
-                        });
-                });
-
-            modelBuilder.Entity("MVCswitchback.Models.UserReviews", b =>
-                {
-                    b.HasOne("MVCswitchback.Models.UserInfo", "UserInfo")
-                        .WithMany("UserReviews")
-                        .HasForeignKey("UserInfoID");
+                    b.HasOne("MVCswitchback.Models.UserComments", "UserComments")
+                        .WithMany("UserInfo")
+                        .HasForeignKey("UserCommentsID");
                 });
 #pragma warning restore 612, 618
         }
