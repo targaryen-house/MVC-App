@@ -22,7 +22,7 @@ namespace MVCswitchback.Controllers
         {
             _trail = trail;
         }
-
+        
         public async Task<IActionResult> Index(string searchString)
         {
             List<Trail> trails = await BackendAPI.GetTrailsAsync(searchString);
