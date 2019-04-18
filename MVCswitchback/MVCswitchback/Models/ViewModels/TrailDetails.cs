@@ -9,6 +9,6 @@ namespace MVCswitchback.Models.ViewModels
     {
         public Trail Trail { get; set; }
         public List<UserReviews> UserReviews { get; set; }
-
+        public Weather Weather { get; set; }
     }
 }

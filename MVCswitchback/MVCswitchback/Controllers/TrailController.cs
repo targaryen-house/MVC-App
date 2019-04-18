@@ -33,11 +33,13 @@ namespace MVCswitchback.Controllers
         {
             Trail trail = await BackendAPI.GetTrailByID(id);
             var userReviews = await _trail.GetUserReviews(id);
+            Weather weather = await BackendAPI.GetWeather(trail.Latitude, trail.Longitude);
 
             TrailDetails trailDetails = new TrailDetails()
             {
                 Trail = trail,
-                UserReviews = userReviews
+                UserReviews = userReviews,
+                Weather = weather
             };
 
             return View(trailDetails);

@@ -4,14 +4,16 @@ using MVCswitchback.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVCswitchback.Migrations
 {
     [DbContext(typeof(SwitchbackDbContext))]
-    partial class SwitchbackDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190418014353_TestingNewNavProps")]
+    partial class TestingNewNavProps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +33,11 @@ namespace MVCswitchback.Migrations
 
                     b.Property<string>("UserName");
 
+                    b.Property<int?>("UserReviewsID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("UserReviewsID");
 
                     b.ToTable("UserInfo");
 
@@ -85,11 +91,7 @@ namespace MVCswitchback.Migrations
 
                     b.Property<int>("UserID");
 
-                    b.Property<int?>("UserInfoID");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("UserInfoID");
 
                     b.ToTable("UserReviews");
 
@@ -131,11 +133,11 @@ namespace MVCswitchback.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MVCswitchback.Models.UserReviews", b =>
+            modelBuilder.Entity("MVCswitchback.Models.UserInfo", b =>
                 {
-                    b.HasOne("MVCswitchback.Models.UserInfo", "UserInfo")
-                        .WithMany("UserReviews")
-                        .HasForeignKey("UserInfoID");
+                    b.HasOne("MVCswitchback.Models.UserReviews", "UserReviews")
+                        .WithMany()
+                        .HasForeignKey("UserReviewsID");
                 });
 #pragma warning restore 612, 618
         }

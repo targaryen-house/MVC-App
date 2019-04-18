@@ -12,5 +12,7 @@ namespace MVCswitchback.Models
         public int UserID { get; set; }
         public int TrailID { get; set; }
         public string UserComment { get; set; }
+
+        public UserInfo UserInfo { get; set; }
     }
 }

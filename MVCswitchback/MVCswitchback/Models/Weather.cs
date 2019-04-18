@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace MVCswitchback.Models
 {
-    public class WeatherModel
+    public class Weather
     {
-
-        public string Weather { get; set; }
+        public string Summary { get; set; }
     }
 }

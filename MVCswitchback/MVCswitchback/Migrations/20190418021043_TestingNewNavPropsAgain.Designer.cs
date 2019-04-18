@@ -4,14 +4,16 @@ using MVCswitchback.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVCswitchback.Migrations
 {
     [DbContext(typeof(SwitchbackDbContext))]
-    partial class SwitchbackDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190418021043_TestingNewNavPropsAgain")]
+    partial class TestingNewNavPropsAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,7 +135,7 @@ namespace MVCswitchback.Migrations
 
             modelBuilder.Entity("MVCswitchback.Models.UserReviews", b =>
                 {
-                    b.HasOne("MVCswitchback.Models.UserInfo", "UserInfo")
+                    b.HasOne("MVCswitchback.Models.UserInfo")
                         .WithMany("UserReviews")
                         .HasForeignKey("UserInfoID");
                 });

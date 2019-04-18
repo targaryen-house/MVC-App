@@ -90,7 +90,7 @@ namespace MVCswitchback.Controllers
             return response.StatusCode;
         }
 
-        public static async Task<WeatherResponse> GetWeather(float lat, float lon)
+        public static async Task<Weather> GetWeather(float lat, float lon)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -101,7 +101,11 @@ namespace MVCswitchback.Controllers
                 var stringResult = await response.Content.ReadAsStringAsync();
                 var rawWeather = JsonConvert.DeserializeObject<WeatherResponse>(stringResult);
 
-                return rawWeather;
+                Weather weather = new Weather()
+                {
+                    Summary = string.Join(",", rawWeather.Weather.Select(x => x.Main))
+                };
+                return weather;
             }
 
         }
