@@ -1,4 +1,4 @@
-# --------UNDER DEVELOPMENT-------- #
+
 
 # Switchback #
 
@@ -16,18 +16,18 @@
 
 - [Tanner *"SKNY-TannMann"* Percival](https://github.com/Tanner253)
 
-## About Switchback ##
+# About Switchback #
 
 
 ### Version 1.0 ###
 - 1.0.0 *Initial Build in progress* 15 APR 2019
 - 1.0.1 *Controllers, models, startup complete* 15 APR 2019
-- 1.1.0 * Framework built out, awaiting API data * 16 APR 2019
-- 1.2.0 * Beginning Model Get, Set testing as well as connecting the front and back end * 17 APR 2019
+- 1.1.0 *Framework built out, awaiting API data* 16 APR 2019
+- 1.2.0 *Beginning Model Get, Set testing as well as connecting the front and back end* 17 APR 2019
 
 ### Problem Domain ###
 
-  --------UNDER DEVELOPMENT--------
+Are you tired of sitting around wondering where to go for a hike but cant rememeber all the trails or a particular trail youve heard of in the area? Well look no further! We here at team *Switchback* have all that covered for you! Our website will allow you to explore, review, rate and comment on trails in your local area! We are excited to bring this to you, *Venture into the Known*.
 
 ## Libraries/API's/Dev environments-Dev Tools
 
@@ -54,7 +54,7 @@
 - Clone the repository onto your machine
    - Once Repo is cloned and set up within ```VS Community``` 
 
-
+_________UNDER DEVELOPMENT_________
 
 ### MVC User Stories ###
 
@@ -178,5 +178,3 @@ Our web app will connect to a SQL database with two tables.  The first table wil
    -         "conditionDate": "2019-01-19 09:34:53",
    -         "userRatings": null
    -     },
-
-# --------UNDER DEVELOPMENT-------- #
