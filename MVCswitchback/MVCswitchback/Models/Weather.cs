@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MVCswitchback.Models.View_Models
+namespace MVCswitchback.Models
 {
-    public class TrailDetails
+    public class Weather
     {
+        public string Summary { get; set; }
     }
 }
