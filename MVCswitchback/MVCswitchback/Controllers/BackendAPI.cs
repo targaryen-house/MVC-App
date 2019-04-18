@@ -8,6 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using MVCswitchback.Models.Services;
+using MVCswitchback.Models.Interfaces;
 
 namespace MVCswitchback.Controllers
 {
@@ -42,6 +44,7 @@ namespace MVCswitchback.Controllers
         public static async Task<Trail> GetTrailByID(int id)
         {
             HttpClient client = new HttpClient();
+
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net");
             var response = client.GetAsync($"/api/trail/{id}").Result;
             response.EnsureSuccessStatusCode();
@@ -50,6 +53,16 @@ namespace MVCswitchback.Controllers
             Trail rawTrail = JsonConvert.DeserializeObject<Trail>(stringResult);
             Trail singletrail = rawTrail;
             return singletrail;
+
+            // Call our API
+            //client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
+            //var response = client.GetAsync($"api/trails/{id}").Result;
+            //response.EnsureSuccessStatusCode();
+
+            //var stringResult = await response.Content.ReadAsStringAsync();
+            //Rootobject rawTrail = JsonConvert.DeserializeObject<Rootobject>(stringResult);
+            //Trail singletrail = rawTrail.Trails[0];
+            //return singletrail;
         }
 
         /// <summary>
@@ -94,8 +107,9 @@ namespace MVCswitchback.Controllers
             HttpResponseMessage response = await client.DeleteAsync($"api/trails/{id}");
             return response.StatusCode;
         }
-
+      
         public static async Task<WeatherResponse> GetWeather(float lat, float lon, IConfiguration configuration)
+
         {
             using (HttpClient client = new HttpClient())
             {
@@ -106,8 +120,14 @@ namespace MVCswitchback.Controllers
                 var stringResult = await response.Content.ReadAsStringAsync();
                 var rawWeather = JsonConvert.DeserializeObject<WeatherResponse>(stringResult);
 
-                return rawWeather;
+                Weather weather = new Weather()
+                {
+                    Summary = string.Join(",", rawWeather.Weather.Select(x => x.Main))
+                };
+                return weather;
             }
+
         }
+
     }
 }
