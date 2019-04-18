@@ -33,20 +33,12 @@
 
 - [X] MVC Framework
 
-- [] --------UNDER DEVELOPMENT--------
-
-- [] ---------UNDER DEVELOPMENT-------
-
-- [] --------UNDER DEVELOPMENT--------
-
-- [] --------UNDER DEVELOPMENT--------
-
-- [] --------UNDER DEVELOPMENT--------
+   - [] --------UNDER DEVELOPMENT--------
 
 - API's
-- [] --------UNDER DEVELOPMENT--------
+- [X] [Switchback API](https://github.com/targaryen-house/API-App)
 
-- [] --------UNDER DEVELOPMENT--------
+- [X] [OpenWeather](https://openweathermap.org/api)
 
 ### How to set up locally ###
 

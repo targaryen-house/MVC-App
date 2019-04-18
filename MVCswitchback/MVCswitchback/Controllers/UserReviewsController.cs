@@ -24,10 +24,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Details of the user reviews
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id"> the idea of UserReviews </param>
+        /// <returns> information of reviews </returns>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,16 +43,20 @@ namespace MVCswitchback.Controllers
             return View(userReview);
         }
 
+        /// <summary>
+        /// Directs to creation page
+        /// </summary>
+        /// <returns> the creation view</returns>
         public IActionResult Create()
         {
             return View();
         }
 
         /// <summary>
-        /// 
+        /// Creates a new user review
         /// </summary>
         /// <param name="userReview"></param>
-        /// <returns></returns>
+        /// <returns> created review </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind(" ID, UserID, TrailID, UserComment")] UserReviews userReview)
@@ -67,10 +71,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// 
+        /// directs to edit page to edit reveiws 
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns> edit view </returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -87,11 +91,11 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Edits a user review 
         /// </summary>
         /// <param name="id"></param>
         /// <param name="userReview"></param>
-        /// <returns></returns>
+        /// <returns> edited review</returns>
         public async Task<IActionResult> Edit(int id, [Bind(" ID, UserID, TrailID, UserComment")] UserReviews userReview)
         {
             if (id != userReview.ID)
@@ -124,10 +128,10 @@ namespace MVCswitchback.Controllers
 
 
         /// <summary>
-        /// 
+        /// Directs to delete page
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns> delete view </returns>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,6 +149,11 @@ namespace MVCswitchback.Controllers
             return View(userReview);
         }
 
+        /// <summary>
+        /// Deletes and confirms a review
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> deletion confirmation </returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirm(int id)

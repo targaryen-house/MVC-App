@@ -23,12 +23,22 @@ namespace MVCswitchback.Controllers
             _trail = trail;
         }
 
-        public async Task<IActionResult> Index(float lat, float lon)
+        public async Task<IActionResult> Index(string searchString)
         {
-            Rootobject trails = await BackendAPI.GetTrailsAsync(lat, lon);
-            return View(trails);
+            List<Trail> trails = await BackendAPI.GetTrailsAsync(searchString);
+            TrailsRootVM trailList = new TrailsRootVM
+            {
+                Trails = trails
+            };
+            return View(trailList);
+            
         }
 
+        /// <summary>
+        /// Displays details of Trails
+        /// </summary>
+        /// <param name="id"> the id of the trail </param>
+        /// <returns> the details of a chose trail </returns>
         public async Task<IActionResult> Details(int id)
         {
             Trail trail = await BackendAPI.GetTrailByID(id);
@@ -45,20 +55,42 @@ namespace MVCswitchback.Controllers
             return View(trailDetails);
         }
 
+        /// <summary>
+        /// directs to the creation of a new trail
+        /// </summary>
+        /// <returns> the new trail on the list </returns>
         public IActionResult Create()
         {
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("")] Trail trail)
+        {
+            await BackendAPI.CreateTrailAsync(trail);
+            Trail returnTrail = await BackendAPI.GetTrailByID(trail.ID);
+            return View(returnTrail);
+        }
+
+        /// <summary>
+        /// Edits the selected trail
+        /// </summary>
+        /// <param name="trail"> declaration of trail </param>
+        /// <returns> the edited trail </returns>
         public async Task<IActionResult> Edit(Trail trail)
         {
             Trail returnTrail = await BackendAPI.UpdateTrailAsync(trail);
             return View(returnTrail);
         }
 
-        public IActionResult Delete()
+        /// <summary>
+        /// Deletes selected trail
+        /// </summary>
+        /// <returns> deletion confirmation </returns>
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            var status =  await BackendAPI.DeleteTrailAsync(id);
+            return View(status);
         }
     }
 }
