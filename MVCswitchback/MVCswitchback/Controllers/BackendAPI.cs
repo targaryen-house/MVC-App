@@ -19,16 +19,17 @@ namespace MVCswitchback.Controllers
         /// <param name="lat"> Latitude Data </param>
         /// <param name="lon"> Longitude Data </param>
         /// <returns></returns>
-        public static async Task<Rootobject> GetTrailsAsync(float lat, float lon)
+        public static async Task<List<Trail>> GetTrailsAsync(string SearchString)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://www.hikingproject.com/ ");
-            var response = client.GetAsync($"/data/get-trails?lat={lat}&lon={lon}&maxDistance=10&key=200426075-bb9e04f2cd93ffc60dd2762d4f81ff2b").Result;
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
+            var response = client.GetAsync($"/api/bing?query={SearchString}").Result;
             response.EnsureSuccessStatusCode();
 
             var stringResult = await response.Content.ReadAsStringAsync();
-            Rootobject rawTrail = JsonConvert.DeserializeObject<Rootobject>(stringResult);
-            return rawTrail;
+            //List<Rootobject> rawTrail = JsonConvert.DeserializeObject<List<Rootobject>>(stringResult);
+            var testTrail = JsonConvert.DeserializeObject<List<Trail>>(stringResult);
+            return testTrail;
         }
 
         /// <summary>
@@ -39,13 +40,13 @@ namespace MVCswitchback.Controllers
         public static async Task<Trail> GetTrailByID(int id)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://www.hikingproject.com");
-            var response = client.GetAsync($"/data/get-trails-by-id?ids={id}&key=200426075-bb9e04f2cd93ffc60dd2762d4f81ff2b").Result;
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net");
+            var response = client.GetAsync($"/api/trail/{id}").Result;
             response.EnsureSuccessStatusCode();
 
             var stringResult = await response.Content.ReadAsStringAsync();
-            Rootobject rawTrail = JsonConvert.DeserializeObject<Rootobject>(stringResult);
-            Trail singletrail = rawTrail.Trails[0];
+            Trail rawTrail = JsonConvert.DeserializeObject<Trail>(stringResult);
+            Trail singletrail = rawTrail;
             return singletrail;
         }
 

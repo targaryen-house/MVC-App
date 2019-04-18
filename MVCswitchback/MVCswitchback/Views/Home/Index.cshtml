@@ -8,28 +8,30 @@
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>Switchback</title>
 </head>
-<body>
 
-    @*<div>
-        <partial name="_CommentsPartialView" />
-        <table class="table table-condensed">
-            @foreach (var comments in Model.UserComment)
-            {
-                @Html.PartialAsync("_CommentsPartialView", comments);
-            }
-        </table>
-    </div>*@
-    <h1>Venture Into The Known</h1>
-    <form asp-controller="Trail" asp-action="Index">
-        <p>
-            Search: <input type="text" name="lat">
-            <input type="text" name="lon">
-            <input type="submit" value="Search" />
-        </p>
-    </form>
-
-</body>
+<body class="splash">
+        <div class="overlay"></div>
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+        </video>
+        <div class="container h-100">
+            <div class="d-flex h-100 text-center align-items-center">
+                <div class="w-100 text-white">
+                    <h1 class="display-3">Venture Into The Known</h1>
+                    <form asp-controller="Trail" asp-action="Index">
+                        <p class="lead mb-0">
+                            <input type="text" name="searchString">
+                        </p>
+                        <p class="lead mb-0">
+                            <input type="submit" value="Search" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+ </body>
 </html>
