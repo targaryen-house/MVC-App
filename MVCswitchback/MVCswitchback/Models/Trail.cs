@@ -75,6 +75,7 @@ namespace MVCswitchback.Models
         public int TrailID { get; set; }
         [JsonProperty("ID")]
         public int ID { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("Type")]
@@ -118,6 +119,7 @@ namespace MVCswitchback.Models
         [JsonProperty("ConditionDetails")]
         public string ConditionDetails { get; set; }
         [JsonProperty("ConditionDate")]
+
         public string ConditionDate { get; set; }
         [JsonProperty("UserRatings")]
         public object UserRatings { get; set; }
