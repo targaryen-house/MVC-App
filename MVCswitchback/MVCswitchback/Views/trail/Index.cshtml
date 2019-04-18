@@ -1,4 +1,4 @@
-﻿@model MVCswitchback.Models.Rootobject
+﻿@model MVCswitchback.Models.View_Models.TrailsRootVM
 @{
     ViewData["Title"] = "Index";
     Layout = "_Layout";
@@ -10,50 +10,137 @@
 
 @foreach (var item in Model.Trails)
 {
-<div class="container border boder-primary rounded m-b-2">
-    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
-    <div class="d-sm-flex align-items-stretch flex-row bg-info" style="height: 50px;">
-        <div class="p-2">
-            <h2>@item.Name</h2>
+    <!-- Card -->
+    <div class="card card-cascade wider reverse">
+
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+            <img class="card-img-top" src="@item.ImgMedium" alt="Card image cap">
+            <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+            </a>
         </div>
+
+        <!-- Card content -->
+        <div class="card-body card-body-cascade text-center">
+
+            <!-- Title -->
+            <h4 class="card-title"><strong>@item.Name</strong></h4>
+            <!-- Subtitle -->
+            <h6 class="font-weight-bold indigo-text py-2">Details</h6>
+            <!-- Text -->
+            <p class="card-text">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Difficulty:
+                            </th>
+                            <th>
+                                Condition:
+                            </th>
+                            <th>
+                                Rating:
+                            </th>
+                            <th>
+                                Length:
+                            </th>
+                            <th>
+                                Elevation:
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @item.Difficulty
+                            </td>
+                            <td>
+                                @item.ConditionStatus
+                            </td>
+                            <td>
+                                @item.Difficulty
+                            </td>
+                            <td>
+                                @item.Length
+                            </td>
+                            <td>
+                                @item.High
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
+
+            <!-- Linkedin -->
+            <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Twitter -->
+            <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+            <!-- Dribbble -->
+            <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+
+        </div>
+
     </div>
-    <div class="d-sm-flex align-items-start flex-row" style="height: 125px;">
-        <div class="p-2">
-            <img src="@item.ImgSqSmall" />
+    <!-- Card -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<div class="container border boder-primary rounded m-b-2">
+        <a asp-action="Details" asp-route-id="@item.TrailID">Details</a>
+        <div class="d-sm-flex align-items-stretch flex-row bg-info" style="height: 50px;">
+            <div class="p-2">
+                <h2>@item.Name</h2>
+            </div>
         </div>
-        <div class="p-2">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            Difficulty
-                        </th>
-                        <th>
-                            Condition
-                        </th>
-                        <th>
-                            Rating
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            @item.Difficulty
-                        </td>
-                        <td>
-                            @item.ConditionStatus
-                        </td>
-                        <td>
-                            @item.Stars
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="d-sm-flex align-items-start flex-row" style="height: 125px;">
+            <div class="p-2">
+                <img src="@item.ImgSqSmall" />
+            </div>
+            <div class="p-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Difficulty
+                            </th>
+                            <th>
+                                Condition
+                            </th>
+                            <th>
+                                Rating
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @item.Difficulty
+                            </td>
+                            <td>
+                                @item.ConditionStatus
+                            </td>
+                            <td>
+                                @item.Stars
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-2">@item.Summary</div>
         </div>
-        <div class="p-2">@item.Summary</div>
-    </div>
-</div>
+    </div>*@
 
 
     @*<div class="container">
