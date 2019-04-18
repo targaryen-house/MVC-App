@@ -150,15 +150,15 @@ Our web app will connect to a SQL database with two tables.  The first table wil
 
   - *Call to be made*: https://switchbackapi.azurewebsites.net/api/bing?query=Seattle
 *Returned data*
-![Image 1](Assets/LocationSearchResponse.PNG)
+![Search Response](https://github.com/targaryen-house/API-App/blob/dev-branch/Assets/LocationSearchResponse.PNG)
 
   - *Call to be made*: https://localhost:44308/api/Trail/1
 *Returned data*
-![Image 1](Assets/SearchTrail.PNG)
+![Search Trail](https://github.com/targaryen-house/API-App/blob/dev-branch/Assets/SearchTrail.PNG)
 
 Models
 
-![Image 1](Assets/TrailModel.PNG)
+![Trail Model](https://github.com/targaryen-house/API-App/blob/dev-branch/Assets/TrailModel.PNG)
 
-![Image 1](Assets/UserRatingModel.PNG)
+![Rating Model](https://github.com/targaryen-house/API-App/blob/dev-branch/Assets/UserRatingModel.PNG)
 
