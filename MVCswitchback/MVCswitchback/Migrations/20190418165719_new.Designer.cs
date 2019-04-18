@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCswitchback.Migrations
 {
     [DbContext(typeof(SwitchbackDbContext))]
-    [Migration("20190418160749_AddsSeedsForID1")]
-    partial class AddsSeedsForID1
+    [Migration("20190418165719_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
