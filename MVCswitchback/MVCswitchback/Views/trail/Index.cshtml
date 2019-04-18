@@ -11,20 +11,43 @@
 @foreach (var item in Model.Trails)
 {
 
-
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">@item.Name</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Length: @item.Length mi</h6>
-                    <p class="card-text">@item.Summary. </p>
-                    <a asp-action="Details" asp-route-id="@item.TrailID">Details</a>
+    if (item.ID == 0)
+    {
+        <div class="container hiddenGem">
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Hidden Gem</p>
+                            <h4 class="card-title">@item.Name</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">Length: @item.Length mi</h6>
+                            <p class="card-text">@item.Summary. </p>
+                            <a asp-action="Details" asp-route-id="@item.TrailID">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.TrailID">Delete</a>
+                            <a asp-action="Edit" asp-route-id="@item">Edit</a>
+                        </div>
+                        <img class="card-img-bottom" src="@item.ImgSmallMed" alt="">
+                    </div>
                 </div>
-                <img class="card-img-bottom" src="@item.ImgSmallMed" alt="Bologna">
             </div>
         </div>
-    </div>
-</div>
+    }
+    else
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">@item.Name</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">Length: @item.Length mi</h6>
+                            <p class="card-text">@item.Summary. </p>
+                            <a asp-action="Details" asp-route-id="@item.TrailID">Details</a>
+                        </div>
+                        <img class="card-img-bottom" src="@item.ImgSmallMed" alt="@item.Name">
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }
