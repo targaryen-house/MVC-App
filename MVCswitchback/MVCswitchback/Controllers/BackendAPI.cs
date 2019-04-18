@@ -1,4 +1,5 @@
-﻿using MVCswitchback.Models;
+﻿using Microsoft.Extensions.Configuration;
+using MVCswitchback.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -14,6 +15,7 @@ namespace MVCswitchback.Controllers
 {
     public class BackendAPI
     {
+        private readonly IConfiguration Configuration;
 
         /// <summary>
         /// Sends Request for data from our API
@@ -105,13 +107,14 @@ namespace MVCswitchback.Controllers
             HttpResponseMessage response = await client.DeleteAsync($"api/trails/{id}");
             return response.StatusCode;
         }
+      
+        public static async Task<WeatherResponse> GetWeather(float lat, float lon, IConfiguration configuration)
 
-        public static async Task<Weather> GetWeather(float lat, float lon)
         {
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://api.openweathermap.org");
-                var response = await client.GetAsync($"/data/2.5/weather?lat={lat}&lon={lon}&appid=cf533494dceec77754749475e189b600");
+                var response = await client.GetAsync($"/data/2.5/weather?lat={lat}&lon={lon}&appid={configuration["OpenAPIKey"]}");
                 response.EnsureSuccessStatusCode();
 
                 var stringResult = await response.Content.ReadAsStringAsync();
