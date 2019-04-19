@@ -10,7 +10,7 @@ namespace MVCswitchback.Models.Interfaces
     {
         // Get all User Reviews for a given trail by trail ID
         Task<List<UserComments>> GetUserReviews(int id);
-        SelectList GetAllUsers();
+        Task<List<UserInfo>> GetAllUsers();
         Task AddComment(UserComments userComment);
     }
 }

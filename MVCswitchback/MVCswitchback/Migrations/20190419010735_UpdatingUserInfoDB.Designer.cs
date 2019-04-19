@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCswitchback.Migrations
 {
     [DbContext(typeof(SwitchbackDbContext))]
-    [Migration("20190418201433_UpdatingUserInfoDB-3")]
-    partial class UpdatingUserInfoDB3
+    [Migration("20190419010735_UpdatingUserInfoDB")]
+    partial class UpdatingUserInfoDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -159,11 +159,14 @@ namespace MVCswitchback.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .IsRequired();
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .IsRequired();
 
-                    b.Property<string>("UserName");
+                    b.Property<string>("UserName")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
