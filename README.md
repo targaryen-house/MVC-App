@@ -1,4 +1,4 @@
-# --------UNDER DEVELOPMENT-------- #
+
 
 # Switchback #
 
@@ -16,36 +16,45 @@
 
 - [Tanner *"SKNY-TannMann"* Percival](https://github.com/Tanner253)
 
-## About Switchback ##
-### Version 1.0 ###
+# About Switchback #
 
---------UNDER DEVELOPMENT--------
+
+### Version 1.0 ###
+- 1.0.0 *Initial Build in progress* 15 APR 2019
+- 1.0.1 *Controllers, models, startup complete* 15 APR 2019
+- 1.1.0 *Framework built out, awaiting API data* 16 APR 2019
+- 1.2.0 *Beginning Model Get, Set testing as well as connecting the front and back end* 17 APR 2019
 
 ### Problem Domain ###
 
---------UNDER DEVELOPMENT--------
+Are you tired of sitting around wondering where to go for a hike but cant rememeber all the trails or a particular trail youve heard of in the area? Well look no further! We here at team *Switchback* have all that covered for you! Our website will allow you to explore, review, rate and comment on trails in your local area! We are excited to bring this to you, *Venture into the Known*.
 
 ## Libraries/API's/Dev environments-Dev Tools
+
 - Libraries
-- [X] VS Community
+   - [X] VS Community
 
-- [X] Azure/DevOps
+   - [X] Azure/DevOps
 
-- [X] MVC Framework
+   - [X] MVC Framework with Entity
 
-   - [] --------UNDER DEVELOPMENT--------
+   - [X] XUnit Testing
+
+   - [X] Bootstrap CSS
+
 
 - API's
-- [X] [Switchback API](https://github.com/targaryen-house/API-App)
+   - [X] [Switchback API](https://github.com/targaryen-house/API-App)
 
-- [X] [OpenWeather](https://openweathermap.org/api)
+   - [X] [OpenWeather](https://openweathermap.org/api)
+
 
 ### How to set up locally ###
 
 - Clone the repository onto your machine
-   - Once Repo is cloned and set up within ```VS Community``` --------UNDER DEVELOPMENT--------
+   - Once Repo is cloned and set up within ```VS Community``` 
 
-  --------UNDER DEVELOPMENT--------
+_________UNDER DEVELOPMENT_________
 
 ### MVC User Stories ###
 
@@ -137,6 +146,19 @@ Our web app will connect to a SQL database with two tables.  The first table wil
 
 ### API Endpoints and Call/Response Sample ###
 
-- Example call:
+- Example call From our API:
 
-# --------UNDER DEVELOPMENT-------- #
+  - *Call to be made*: https://switchbackapi.azurewebsites.net/api/bing?query=Seattle
+*Returned data*
+![Search Response](https://github.com/targaryen-house/API-App/blob/dev-branch/Assets/LocationSearchResponse.PNG)
+
+  - *Call to be made*: https://localhost:44308/api/Trail/1
+*Returned data*
+![Search Trail](https://github.com/targaryen-house/API-App/blob/dev-branch/Assets/SearchTrail.PNG)
+
+Models
+
+![Trail Model](https://github.com/targaryen-house/API-App/blob/dev-branch/Assets/TrailModel.PNG)
+
+![Rating Model](https://github.com/targaryen-house/API-App/blob/dev-branch/Assets/UserRatingModel.PNG)
+

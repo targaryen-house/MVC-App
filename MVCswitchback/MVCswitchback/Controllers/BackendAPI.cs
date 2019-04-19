@@ -36,7 +36,7 @@ namespace MVCswitchback.Controllers
         /// Queries the ID data for a particular trail from our API
         /// </summary>
         /// <param name="id"> ID of trail </param>
-        /// <returns> A trail "singletrail" </returns>
+        /// <returns> Returns a selected trail </returns>
         public static async Task<Trail> GetTrailByID(int id)
         {
             HttpClient client = new HttpClient();
@@ -66,10 +66,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        /// Creates trail async
+        /// Creates trail and posts it to the page
         /// </summary>
-        /// <param name="trail"> a new created trail </param>
-        /// <returns> Returns the location </returns>
+        /// <param name="trail">  Identifies the trail in relation to a newly created trail </param>
+        /// <returns> Returns the location and page of the newly created trail </returns>
         public static async Task<Uri> CreateTrailAsync(Trail trail)
         {
             HttpClient client = new HttpClient();
@@ -79,10 +79,10 @@ namespace MVCswitchback.Controllers
         }
 
         /// <summary>
-        ///  Updates a particular trail
+        ///  Updates a selected trail
         /// </summary>
-        /// <param name="trail"> a trail </param>
-        /// <returns> updated trail </returns>
+        /// <param name="trail"> Identifies the trail in relation to a newly modified trail </param>
+        /// <returns> returns an updated trail </returns>
         public static async Task<Trail> UpdateTrailAsync(Trail trail)
         {
             HttpClient client = new HttpClient();
@@ -105,6 +105,13 @@ namespace MVCswitchback.Controllers
             return response.StatusCode;
         }
       
+        /// <summary>
+        /// Gets the weather in relation to the current search area based on multiple sources of data
+        /// </summary>
+        /// <param name="lat"> Latitude Data </param>
+        /// <param name="lon"> Longitude Data</param>
+        /// <param name="configuration"> Identifier for key/value </param>
+        /// <returns> Returns the weather of the selected location </returns>
         public static async Task<Weather> GetWeather(float lat, float lon, IConfiguration configuration)
 
         {

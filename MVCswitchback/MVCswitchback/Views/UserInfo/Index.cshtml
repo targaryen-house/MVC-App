@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MVCswitchback.Models.UserInfo>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<h4>All Users</h4>
+
+<p>
+    <a asp-action="Create">Add User</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User ID
+            </th>
+            <th>
+                User Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.ID
+                </td>
+                <td>
+                    @item.UserName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
