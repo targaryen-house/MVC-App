@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "_Layout";
+    int trailID = Model.Trail.TrailID;
+    int number = 0;
 }
 
 <div class="container">
@@ -31,17 +33,16 @@
     <h5>@Model.Trail.Summary</h5>
 </div>
 
-<a asp-controller="UserComments" asp-action="Create" asp-route-id="@Model.Trail.ID" >Add Comment</a>
-
-@*<div class="container">
+<div class="container">
     <div class="row">
         <div class="col-mid-4">
-            <form asp-action="Create">
+            <form action="/" method="post"></form>
+            <form asp-controller="Trail" asp-action="Create" >
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="UserComment.TrailID" />
+                <input type="hidden" asp-for="Trail.TrailID" />
                 <div class="form-group">
-                    <label asp-for="UserInfo.ID" class="control-label">Room Name: </label>
-                    <select asp-for="UserInfo.ID" class="form-control" asp-items="ViewBag.UserInfoID"></select>
+                    <label asp-for="UserComment.UserInfoID" class="control-label">User Name: </label>
+                    <select asp-for="UserComment.UserInfoID" class="form-control" asp-items="@Model.Users"></select>
                 </div>
                 <div class="form-group">
                     <label asp-for="UserComment.UserComment" class="control-label"></label>
@@ -49,13 +50,12 @@
                     <span asp-validation-for="UserComment.UserComment" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="UserComments" class="btn btn-primary" />
                 </div>
             </form>
-
         </div>
     </div>
-</div>*@
+</div>
 
 @foreach (var item in Model.UserComments)
 {

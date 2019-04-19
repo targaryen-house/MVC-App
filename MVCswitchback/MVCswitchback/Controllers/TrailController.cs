@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using MVCswitchback.Models;
@@ -25,7 +26,7 @@ namespace MVCswitchback.Controllers
             _trail = trail;
             _configuration = configuration;
         }
-        
+
         public async Task<IActionResult> Index(string searchString)
         {
             List<Trail> trails = await BackendAPI.GetTrailsAsync(searchString);
@@ -34,7 +35,7 @@ namespace MVCswitchback.Controllers
                 Trails = trails
             };
             return View(trailList);
-            
+
         }
 
         /// <summary>
@@ -45,12 +46,20 @@ namespace MVCswitchback.Controllers
         public async Task<IActionResult> Details(int id)
         {
             Trail trail = await BackendAPI.GetTrailByID(id);
+            var userList = await _trail.GetAllUsers();
             var userReviews = await _trail.GetUserReviews(id);
             Weather weather = await BackendAPI.GetWeather(trail.Latitude, trail.Longitude, _configuration);
+            List<SelectListItem> users = new List<SelectListItem>();
+
+            foreach (var item in userList)
+            {
+                users.Add(new SelectListItem { Text = item.UserName, Value = item.ID.ToString() });
+            };
 
             TrailDetails trailDetails = new TrailDetails()
             {
                 Trail = trail,
+                Users = users,
                 UserComments = userReviews,
                 Weather = weather
             };
@@ -65,6 +74,23 @@ namespace MVCswitchback.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [Route("comment")]
+        public async Task<IActionResult> Create(TrailDetails trailDetails)
+        {
+            UserComments comment = new UserComments()
+            {
+                TrailID = trailDetails.Trail.TrailID,
+                UserInfoID = trailDetails.UserComment.UserInfoID,
+                UserComment = trailDetails.UserComment.UserComment,
+
+            };
+
+            int id = trailDetails.Trail.TrailID;
+            await _trail.AddComment(comment);
+            return RedirectToAction("Details", new { id });
         }
 
         [HttpPost]
@@ -102,7 +128,7 @@ namespace MVCswitchback.Controllers
         /// <returns> Returns deletion confirmation </returns>
         public async Task<IActionResult> Delete(int id)
         {
-            var status =  await BackendAPI.DeleteTrailAsync(id);
+            var status = await BackendAPI.DeleteTrailAsync(id);
             return View(status);
         }
     }

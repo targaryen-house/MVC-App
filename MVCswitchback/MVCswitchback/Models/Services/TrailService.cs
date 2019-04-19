@@ -33,11 +33,9 @@ namespace MVCswitchback.Models.Services
             return comments;
         }
 
-        public SelectList GetAllUsers()
+        public async Task<List<UserInfo>> GetAllUsers()
         {
-            return new SelectList(_context.UserInfo, "ID", "User Name");
-
-            //return await _context.UserInfo.ToListAsync();
+            return await _context.UserInfo.ToListAsync();
         }
 
         public async Task AddComment(UserComments userComment)
