@@ -48,6 +48,7 @@ namespace MVCswitchback.Controllers
         /// </summary>
         /// <returns> returns the creation view/menu </returns>
         public IActionResult Create()
+
         {
             return View();
         }

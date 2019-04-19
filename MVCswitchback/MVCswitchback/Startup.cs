@@ -40,6 +40,7 @@ namespace MVCswitchback
                 options.UseSqlServer("ConnectionStrings:ProductionConnection"));
 
             services.AddScoped<ITrailManager, TrailService>();
+            services.AddScoped<IUserInfoManager, UserInfoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

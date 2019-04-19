@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MVCswitchback.Data;
 using MVCswitchback.Models.Interfaces;
 using System;
@@ -24,12 +25,25 @@ namespace MVCswitchback.Models.Services
         /// <returns> List of user comments and a review related to the selected trail </returns>
         public async Task<List<UserComments>> GetUserReviews(int id)
         {
-            var list = await _context.UserComments
+            var comments = await _context.UserComments
                                .Where(x => x.TrailID == id)
                                .Include(u => u.UserInfo)
                                .ToListAsync();
-            
-            return  list;
+
+            return comments;
+        }
+
+        public SelectList GetAllUsers()
+        {
+            return new SelectList(_context.UserInfo, "ID", "User Name");
+
+            //return await _context.UserInfo.ToListAsync();
+        }
+
+        public async Task AddComment(UserComments userComment)
+        {
+            await _context.UserComments.AddAsync(userComment);
+            await _context.SaveChangesAsync();
         }
 
     }

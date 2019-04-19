@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MVCswitchback.Models.Interfaces
 {
-    public interface IUserInfo
+    public interface IUserInfoManager
     {
         // Get all users
         Task<List<UserInfo>> GetAllUsers(string searchString);
