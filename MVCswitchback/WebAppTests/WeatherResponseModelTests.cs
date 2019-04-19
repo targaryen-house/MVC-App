@@ -99,29 +99,6 @@ namespace WebAppTests
 
             Assert.Equal("wait, no... its cold", weatherResponse.Temp);
         }
-
-        //[Fact]
-        //public void CanGetWeathersResponseWeatherIEnum()
-        //{
-        //    WeatherResponse weatherResponse = new WeatherResponse()
-
-        //    {
-             
-        //    };
-
-        //    Assert.();
-        //}
-
-        //[Fact]
-        //public void CanSetWeatherResponseWeatherIenum()
-        //{
-        //    WeatherResponse weatherResponse = new WeatherResponse()
-        //    {
-
-        //    };
-
-        //    Assert.Equal("Or is it?", weatherResponse.);
-        //}
     }
 
     }

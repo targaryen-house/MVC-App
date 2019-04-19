@@ -18,7 +18,7 @@ namespace MVCswitchback.Data
         /// <summary>
         /// seeded data
         /// </summary>
-        /// <param name="modelBuilder"></param>
+        /// <param name="modelBuilder"> Identifier for the model builder </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserInfo>().HasData(
