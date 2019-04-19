@@ -1,7 +1,103 @@
-﻿
+﻿@model MVCswitchback.Models.Trail
 @{
     ViewData["Title"] = "Edit";
 }
 
 <h1>Edit</h1>
 
+<h4>Trail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="@Model.Name"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Summary" class="control-label"></label>
+                <input asp-for="Summary" class="form-control" placeholder="@Model.Summary"/>
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Difficulty" class="control-label"></label>
+                <input asp-for="Difficulty" class="form-control" placeholder="@Model.Difficulty"/>
+                <span asp-validation-for="Difficulty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stars" class="control-label"></label>
+                <input asp-for="Stars" class="form-control" placeholder="@Model.Stars"/>
+                <span asp-validation-for="Stars" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" placeholder="@Model.Location"/>
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImgMedium" class="control-label"></label>
+                <input asp-for="ImgMedium" class="form-control" placeholder="@Model.ImgMedium"/>
+                <span asp-validation-for="ImgMedium" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Length" class="control-label"></label>
+                <input asp-for="Length" class="form-control" placeholder="@Model.Length"/>
+                <span asp-validation-for="Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ascent" class="control-label"></label>
+                <input asp-for="Ascent" class="form-control" placeholder="@Model.Ascent"/>
+                <span asp-validation-for="Ascent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descent" class="control-label"></label>
+                <input asp-for="Descent" class="form-control" placeholder="@Model.Descent"/>
+                <span asp-validation-for="Descent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="High" class="control-label"></label>
+                <input asp-for="High" class="form-control" placeholder="@Model.High"/>
+                <span asp-validation-for="High" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Low" class="control-label"></label>
+                <input asp-for="Low" class="form-control" placeholder="@Model.Low"/>
+                <span asp-validation-for="Low" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Longitude" class="control-label"></label>
+                <input asp-for="Longitude" class="form-control" placeholder="@Model.Longitude"/>
+                <span asp-validation-for="Longitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Latitude" class="control-label"></label>
+                <input asp-for="Latitude" class="form-control" placeholder="@Model.Latitude"/>
+                <span asp-validation-for="Latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConditionStatus" class="control-label"></label>
+                <input asp-for="ConditionStatus" class="form-control" placeholder="@Model.ConditionStatus"/>
+                <span asp-validation-for="ConditionStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConditionDetails" class="control-label"></label>
+                <input asp-for="ConditionDetails" class="form-control" placeholder="@Model.ConditionDetails"/>
+                <span asp-validation-for="ConditionDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConditionDate" class="control-label"></label>
+                <input asp-for="ConditionDate" class="form-control" placeholder="@Model.ConditionDate"/>
+                <span asp-validation-for="ConditionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Post" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

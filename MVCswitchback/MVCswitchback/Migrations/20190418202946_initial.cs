@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MVCswitchback.Migrations
 {
-    public partial class _1 : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,25 +23,24 @@ namespace MVCswitchback.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserReviews",
+                name: "UserComments",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserID = table.Column<int>(nullable: false),
+                    UserInfoID = table.Column<int>(nullable: false),
                     TrailID = table.Column<int>(nullable: false),
-                    UserComment = table.Column<string>(nullable: true),
-                    UserInfoID = table.Column<int>(nullable: true)
+                    UserComment = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserReviews", x => x.ID);
+                    table.PrimaryKey("PK_UserComments", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_UserReviews_UserInfo_UserInfoID",
+                        name: "FK_UserComments_UserInfo_UserInfoID",
                         column: x => x.UserInfoID,
                         principalTable: "UserInfo",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -57,32 +56,38 @@ namespace MVCswitchback.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "UserReviews",
-                columns: new[] { "ID", "TrailID", "UserComment", "UserID", "UserInfoID" },
+                table: "UserComments",
+                columns: new[] { "ID", "TrailID", "UserComment", "UserInfoID" },
                 values: new object[,]
                 {
-                    { 1, 7013499, "My trailmates were all slow, but the trail was great.", 1, null },
-                    { 2, 7013499, "I don't like physical activity...", 2, null },
-                    { 3, 7013499, "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle.", 3, null },
-                    { 4, 7013499, "It was ok.", 4, null },
-                    { 5, 7013499, "The trail was fantastic and the views were amazing.", 5, null },
-                    { 6, 1, "My trailmates were all slow, but the trail was great.", 1, null },
-                    { 7, 1, "I don't like physical activity...", 2, null },
-                    { 8, 1, "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle.", 3, null },
-                    { 9, 1, "It was ok.", 4, null },
-                    { 10, 1, "The trail was fantastic and the views were amazing.", 5, null }
+                    { 1, 7013499, "My trailmates were all slow, but the trail was great.", 1 },
+                    { 6, 1, "My trailmates were all slow, but the trail was great.", 1 },
+                    { 11, 2, "My trailmates were all slow, but the trail was great.", 1 },
+                    { 13, 3, "My trailmates were all slow, but the trail was great.", 1 },
+                    { 15, 4, "My trailmates were all slow, but the trail was great.", 1 },
+                    { 2, 7013499, "I don't like physical activity...", 2 },
+                    { 7, 1, "I don't like physical activity...", 2 },
+                    { 12, 2, "I don't like physical activity...", 2 },
+                    { 14, 3, "I don't like physical activity...", 2 },
+                    { 16, 4, "I don't like physical activity...", 2 },
+                    { 3, 7013499, "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle.", 3 },
+                    { 8, 1, "Was much fun, has difficult. much peril. 12/10 would recommend for bamboozle.", 3 },
+                    { 4, 7013499, "It was ok.", 4 },
+                    { 9, 1, "It was ok.", 4 },
+                    { 5, 7013499, "The trail was fantastic and the views were amazing.", 5 },
+                    { 10, 1, "The trail was fantastic and the views were amazing.", 5 }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserReviews_UserInfoID",
-                table: "UserReviews",
+                name: "IX_UserComments_UserInfoID",
+                table: "UserComments",
                 column: "UserInfoID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserReviews");
+                name: "UserComments");
 
             migrationBuilder.DropTable(
                 name: "UserInfo");

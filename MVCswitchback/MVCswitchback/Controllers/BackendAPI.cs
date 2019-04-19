@@ -27,10 +27,7 @@ namespace MVCswitchback.Controllers
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
             var response = client.GetAsync($"/api/bing?query={SearchString}").Result;
-            response.EnsureSuccessStatusCode();
-
             var stringResult = await response.Content.ReadAsStringAsync();
-            //List<Rootobject> rawTrail = JsonConvert.DeserializeObject<List<Rootobject>>(stringResult);
             var testTrail = JsonConvert.DeserializeObject<List<Trail>>(stringResult);
             return testTrail;
         }
@@ -46,11 +43,25 @@ namespace MVCswitchback.Controllers
 
             client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net");
             var response = client.GetAsync($"/api/trail/{id}").Result;
-            response.EnsureSuccessStatusCode();
 
             var stringResult = await response.Content.ReadAsStringAsync();
             Trail rawTrail = JsonConvert.DeserializeObject<Trail>(stringResult);
             Trail singletrail = rawTrail;
+
+            return singletrail;
+        }
+
+        public static async Task<Trail> GetTrailByName(float name)
+        {
+            HttpClient client = new HttpClient();
+
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net");
+            var response = client.GetAsync($"/api/trail?trailLength={name}").Result;
+
+            var stringResult = await response.Content.ReadAsStringAsync();
+            Trail rawTrail = JsonConvert.DeserializeObject<Trail>(stringResult);
+            Trail singletrail = rawTrail;
+
             return singletrail;
         }
 
@@ -62,9 +73,8 @@ namespace MVCswitchback.Controllers
         public static async Task<Uri> CreateTrailAsync(Trail trail)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
-            HttpResponseMessage response = await client.PostAsJsonAsync("api/trail", trail);
-            
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net");
+            HttpResponseMessage response = await client.PostAsJsonAsync("/api/trail", trail);
             return response.Headers.Location;
         }
 
@@ -76,12 +86,10 @@ namespace MVCswitchback.Controllers
         public static async Task<Trail> UpdateTrailAsync(Trail trail)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
-            HttpResponseMessage response = await client.PutAsJsonAsync($"api/trail/{trail.ID}", trail);
-            response.EnsureSuccessStatusCode();
-
-            trail = await response.Content.ReadAsAsync<Trail>();
-            return trail;
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net");
+            HttpResponseMessage response = await client.PutAsJsonAsync($"/api/trail/{trail.TrailID}", trail);
+            Trail returnTrail = await GetTrailByID(trail.TrailID);
+            return returnTrail;
         }
 
         /// <summary>
@@ -92,8 +100,8 @@ namespace MVCswitchback.Controllers
         public static async Task<HttpStatusCode> DeleteTrailAsync(int id)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net/");
-            HttpResponseMessage response = await client.DeleteAsync($"api/trail/{id}");
+            client.BaseAddress = new Uri("https://switchbackapi.azurewebsites.net");
+            HttpResponseMessage response = await client.DeleteAsync($"/api/trail/{id}");
             return response.StatusCode;
         }
       

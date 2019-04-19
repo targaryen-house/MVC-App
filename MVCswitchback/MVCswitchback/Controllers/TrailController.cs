@@ -71,20 +71,28 @@ namespace MVCswitchback.Controllers
         public async Task<IActionResult> Create([Bind("Name, Summary, Difficulty, Location, ImgMedium, Length, Ascent, Descent, High, Low, Longitude, Latitude, ConditionStatus, ConditionDetails, ConditionDate")] Trail trail)
         {
             await BackendAPI.CreateTrailAsync(trail);
-            Trail returnTrail = await BackendAPI.GetTrailByID(trail.ID);
-            return View(returnTrail);
+            return RedirectToAction("ThankYou");
         }
 
-        /// <summary>
-        /// Edits the selected trail
-        /// </summary>
-        /// <param name="trail"> declaration of trail </param>
-        /// <returns> the edited trail </returns>
-        public async Task<IActionResult> Edit(Trail trail)
+        public IActionResult ThankYou()
         {
-            Trail returnTrail = await BackendAPI.UpdateTrailAsync(trail);
-            return View(returnTrail);
+            return View();
         }
+
+        //[HttpGet]
+        //public async Task<IActionResult> Edit(int ID)
+        //{
+        //    Trail returnTrail = await BackendAPI.GetTrailByID(ID);
+        //    return View(returnTrail);
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> Edit([Bind("TrailID, Name, Summary, Difficulty, Stars, Location, ImgMedium, Length, Ascent, Descent, High, Low, Longitude, Latitude, ConditionStatus, ConditionDetails, ConditionDate")]Trail trail)
+        //{
+        //    Trail returnTrail = await BackendAPI.UpdateTrailAsync(trail);
+        //    return RedirectToAction();
+
+        //}
 
         /// <summary>
         /// Deletes selected trail
