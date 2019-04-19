@@ -47,7 +47,7 @@ namespace MVCswitchback.Controllers
         /// Directs to creation page
         /// </summary>
         /// <returns> the creation view</returns>
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
             return View();
         }

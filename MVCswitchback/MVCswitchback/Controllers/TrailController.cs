@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Routing;
 using MVCswitchback.Models;
 using MVCswitchback.Models.Interfaces;
@@ -42,16 +43,17 @@ namespace MVCswitchback.Controllers
         public async Task<IActionResult> Details(int id)
         {
             Trail trail = await BackendAPI.GetTrailByID(id);
+            //var userList = await _trail.GetAllUsers();
             var userReviews = await _trail.GetUserReviews(id);
             Weather weather = await BackendAPI.GetWeather(trail.Latitude, trail.Longitude);
-
             TrailDetails trailDetails = new TrailDetails()
             {
                 Trail = trail,
+                //Users = userList,
                 UserComments = userReviews,
                 Weather = weather
             };
-
+            ViewData["UserInfoID"] = _trail.GetAllUsers();
             return View(trailDetails);
         }
 
@@ -70,6 +72,18 @@ namespace MVCswitchback.Controllers
             await BackendAPI.CreateTrailAsync(trail);
             Trail returnTrail = await BackendAPI.GetTrailByID(trail.ID);
             return View(returnTrail);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("UserInfoID,TrailID,UserComment")] UserComments comment)
+        {
+            if (ModelState.IsValid)
+            {
+                await _trail.AddComment(comment);
+                return View((Int32)comment.TrailID);
+            }
+
+            return View((Int32)comment.TrailID);
         }
 
         /// <summary>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVCswitchback.Models.Services
 {
-    public class UserInfoService : IUserInfo
+    public class UserInfoService : IUserInfoManager
     {
         private readonly SwitchbackDbContext _context;
 
