@@ -12,9 +12,9 @@ namespace MVCswitchback.Controllers
 {
     public class UserInfoController : Controller
     {
-        private readonly IUserInfo _users;
+        private readonly IUserInfoManager _users;
 
-        public UserInfoController(IUserInfo users)
+        public UserInfoController(IUserInfoManager users)
         {
             _users = users;
         }
