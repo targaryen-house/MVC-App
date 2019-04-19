@@ -71,13 +71,13 @@ namespace MVCswitchback.Controllers
         /// Directs to the creation of a new trail
         /// </summary>
         /// <returns> Returns the view to create a new trail </returns>
-        public IActionResult Create()
+        [HttpGet]
+        public IActionResult HiddenGem()
         {
             return View();
         }
 
-        [HttpPost]
-        [Route("comment")]
+        [HttpPost("comment")]
         public async Task<IActionResult> Create(TrailDetails trailDetails)
         {
             UserComments comment = new UserComments()
@@ -94,7 +94,7 @@ namespace MVCswitchback.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Name, Summary, Difficulty, Location, ImgMedium, Length, Ascent, Descent, High, Low, Longitude, Latitude, ConditionStatus, ConditionDetails, ConditionDate")] Trail trail)
+        public async Task<IActionResult> HiddenGem([Bind("Name, Summary, Difficulty, Location, ImgMedium, Length, Ascent, Descent, High, Low, Longitude, Latitude, ConditionStatus, ConditionDetails, ConditionDate")] Trail trail)
         {
             await BackendAPI.CreateTrailAsync(trail);
             return RedirectToAction("ThankYou");
