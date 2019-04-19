@@ -32,12 +32,12 @@ namespace MVCswitchback
         {
             services.AddMvc();
 
-            string connectionString = Environment.IsDevelopment()
+          /*  string connectionString = Environment.IsDevelopment()
                                                  ? Configuration["ConnectionStrings:DefaultConnection"]
-                                                 : Configuration["ConnectionStrings:ProductionConnection"];
+                                                 : Configuration["ConnectionStrings:ProductionConnection"];*/
 
             services.AddDbContext<SwitchbackDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlServer("ConnectionStrings:ProductionConnection"));
 
             services.AddScoped<ITrailManager, TrailService>();
             services.AddScoped<IUserInfoManager, UserInfoService>();

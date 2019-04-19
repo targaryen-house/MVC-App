@@ -18,6 +18,11 @@ namespace MVCswitchback.Models.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves the information from the users review for a selected trail and returns all related data
+        /// </summary>
+        /// <param name="id"> ID for the trail </param>
+        /// <returns> List of user comments and a review related to the selected trail </returns>
         public async Task<List<UserComments>> GetUserReviews(int id)
         {
             var comments = await _context.UserComments

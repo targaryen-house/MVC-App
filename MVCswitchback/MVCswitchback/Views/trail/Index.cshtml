@@ -11,260 +11,43 @@
 @foreach (var item in Model.Trails)
 {
 
-
-<div class="container">
-    <a asp-action="Details" asp-route-id="@item.TrailID" class="thumbnail">
-        <div class="row">
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">@item.Name</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Length: @item.Length mi</h6>
-                        <p class="card-text">@item.Summary. </p>
-                        <p>Details</p>
-                    </div>
-                    <img class="card-img-bottom" src="@item.ImgSmallMed" alt="Bologna">
-                </div>
-            </div>
-        </div>
-    </a>
-</div>
-
-
-
-
-    @*<!-- Card -->
-        <div class="card card-cascade wider reverse">
-
-            <!-- Card image -->
-
-            <div class="view view-cascade overlay w-10">
-                <img class="card-img-top" src="@item.ImgMedium" alt="Card image cap" width="100">
-                <a href="#!">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-
-            <!-- Card content -->
-            <div class="card-body card-body-cascade text-center w-20">
-
-                <!-- Title -->
-                <h4 class="card-title"><strong>@item.Name</strong></h4>
-                <!-- Subtitle -->
-                <h6 class="font-weight-bold indigo-text py-2">Details</h6>
-                <!-- Text -->
-                <p class="card-text">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Difficulty:
-                                </th>
-                                <th>
-                                    Condition:
-                                </th>
-                                <th>
-                                    Rating:
-                                </th>
-                                <th>
-                                    Length:
-                                </th>
-                                <th>
-                                    Elevation:
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @item.Difficulty
-                                </td>
-                                <td>
-                                    @item.ConditionStatus
-                                </td>
-                                <td>
-                                    @item.Difficulty
-                                </td>
-                                <td>
-                                    @item.Length
-                                </td>
-                                <td>
-                                    @item.High
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </p>
-
-                <!-- Linkedin -->
-                <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-                <!-- Twitter -->
-                <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
-                <!-- Dribbble -->
-                <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
-
-            </div>
-
-        </div>
-        <!-- Card -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="container border boder-primary rounded m-b-2">
-            <a asp-action="Details" asp-route-id="@item.TrailID">Details</a>
-            <div class="d-sm-flex align-items-stretch flex-row bg-info" style="height: 50px;">
-                <div class="p-2">
-                    <h2>@item.Name</h2>
-                </div>
-            </div>
-            <div class="d-sm-flex align-items-start flex-row" style="height: 125px;">
-                <div class="p-2">
-                    <img src="@item.ImgSqSmall" />
-                </div>
-                <div class="p-2">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Difficulty
-                                </th>
-                                <th>
-                                    Condition
-                                </th>
-                                <th>
-                                    Rating
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    @item.Difficulty
-                                </td>
-                                <td>
-                                    @item.ConditionStatus
-                                </td>
-                                <td>
-                                    @item.Stars
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="p-2">@item.Summary</div>
-            </div>
-        </div>*@
-
-
-    @*<div class="container">
-            <a href="#" class="thumbnail">
-                <div class="row">
-                    <h2>@item.name</h2>
-                </div>
-                <div class="row">
-                    <div class="span4">
-                        <div class="media">
-                            <span class="media-left">
-                                <img src="@item.imgSqSmall" />
-                            </span>
+    if (item.ID == 0)
+    {
+        <div class="container hiddenGem">
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Hidden Gem</p>
+                            <h4 class="card-title">@item.Name</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">Length: @item.Length mi</h6>
+                            <p class="card-text">@item.Summary. </p>
+                            <a asp-action="Details" asp-route-id="@item.TrailID">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.TrailID">Delete</a>
+                            <a asp-action="Edit" asp-route-id="@item">Edit</a>
                         </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Difficulty
-                                    </th>
-                                    <th>
-                                        Condition
-                                    </th>
-                                    <th>
-                                        Rating
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        @item.difficulty
-                                    </td>
-                                    <td>
-                                        @item.conditionStatus
-                                    </td>
-                                    <td>
-                                        @item.stars
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="col-small">
-                            @item.summary
-                        </p>
+                        <img class="card-img-bottom" src="@item.ImgSmallMed" alt="">
                     </div>
                 </div>
-                <div class="row">
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">@item.Name</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">Length: @item.Length mi</h6>
+                            <p class="card-text">@item.Summary. </p>
+                            <a asp-action="Details" asp-route-id="@item.TrailID">Details</a>
+                        </div>
+                        <img class="card-img-bottom" src="@item.ImgSmallMed" alt="@item.Name">
                     </div>
-        </a>
-        </div>*@
+                </div>
+            </div>
+        </div>
+    }
 }
-
-
-@*<table>
-        <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Summary
-                </th>
-                <th>
-                    Difficulty
-                </th>
-                <th>
-                    Condition
-                </th>
-                <th>
-                    Condition Details
-                </th>
-                <th>
-                    Condition Posted
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.trails)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.summary)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.difficulty)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.conditionStatus)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.conditionDetails)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.conditionDate)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>*@
