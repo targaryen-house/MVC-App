@@ -47,6 +47,12 @@ a.thumbnail:hover {
         opacity: 0.5;
         z-index: 1;
     }
+.card-img-top {
+    height: 390px;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    overflow: hidden;
+}
 
 @media (pointer: coarse) and (hover: none) {
         .splash video {

@@ -10,6 +10,7 @@
 <a asp-action="Create">Add your own "Hidden Gem".</a>
 
 
+
 <div class="container-fluid">
     @foreach (var item in Model.Trails)
     {
@@ -38,7 +39,7 @@
         else
         {
             <div class="row">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">@item.Name</h4>
@@ -46,7 +47,7 @@
                             <p class="card-text">@item.Summary. </p>
                             <a asp-action="Details" asp-route-id="@item.TrailID">Details</a>
                         </div>
-                        <img class="card-img-bottom" src="@item.ImgSmallMed" alt="@item.Name">
+                        <img class="card-img-bottom col-8 row-8" src="@item.ImgMedium" alt="@item.Name">
                     </div>
                 </div>
             </div>
@@ -54,3 +55,4 @@
         }
     }
 </div>
+
