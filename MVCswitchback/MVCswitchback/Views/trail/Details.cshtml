@@ -1,0 +1,69 @@
+﻿@model MVCswitchback.Models.ViewModels.TrailDetails
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_Layout";
+    int trailID = Model.Trail.TrailID;
+    int number = 0;
+}
+
+<div class="container">
+    <h1>@Model.Trail.Name</h1>
+    <p>@Model.Trail.Location</p>
+    <img src="@Model.Trail.ImgMedium" />
+    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 150px;">
+        <h6>Quick details pane</h6>
+        <p>Difficulty: @Model.Trail.Difficulty</p>
+        <p>Stars: @Model.Trail.Stars</p>
+        <p>Weather: @Model.Weather.Summary</p>
+    </div>
+    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 250px;">
+        <h6>Trail Stats</h6>
+        <p>Length: @Model.Trail.Length</p>
+        <p>Ascent: @Model.Trail.Ascent</p>
+        <p>Descent: @Model.Trail.Descent</p>
+        <p>High: @Model.Trail.High</p>
+        <p>Low: @Model.Trail.Low</p>
+    </div>
+    <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 150px;">
+        <h6>Conditions:</h6>
+        <p>@Model.Trail.ConditionStatus</p>
+        <p>Condition Date: @Model.Trail.ConditionDate</p>
+        <p>Condition Details: @Model.Trail.ConditionDetails</p>
+    </div>
+    <h5>@Model.Trail.Summary</h5>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-mid-4">
+            <form action="/" method="post"></form>
+            <form asp-controller="Trail" asp-action="Create" >
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Trail.TrailID" />
+                <div class="form-group">
+                    <label asp-for="UserComment.UserInfoID" class="control-label">User Name: </label>
+                    <select asp-for="UserComment.UserInfoID" class="form-control" asp-items="@Model.Users"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserComment.UserComment" class="control-label"></label>
+                    <input asp-for="UserComment.UserComment" class="form-control" />
+                    <span asp-validation-for="UserComment.UserComment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="UserComments" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@foreach (var item in Model.UserComments)
+{
+    <div class="container">
+        <div class="d-sm-flex align-items-start flex-column border border-primary rounded" style="height: 125px;">
+            <h6>Author: @item.UserInfo.UserName</h6>
+            <p>@item.UserComment</p>
+        </div>
+    </div>
+}
+
