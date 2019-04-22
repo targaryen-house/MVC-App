@@ -49,13 +49,6 @@ Are you tired of sitting around wondering where to go for a hike but cant rememe
    - [X] [OpenWeather](https://openweathermap.org/api)
 
 
-### How to set up locally ###
-
-- Clone the repository onto your machine
-   - Once Repo is cloned and set up within ```VS Community``` 
-
-_________UNDER DEVELOPMENT_________
-
 ### MVC User Stories ###
 
 - As a User, I want to be able to search for trails in a given area or by specific keywords.
@@ -134,7 +127,7 @@ _________UNDER DEVELOPMENT_________
 
 ### Web App Wireframe
 
-![Web App Wirefram](https://github.com/targaryen-house/MVC-App/blob/dev-branch/Assets/Switchback_WIREFRAME.png)
+![Web App Wireframe](https://github.com/targaryen-house/MVC-App/blob/dev-branch/Assets/Switchback_WIREFRAME.png)
 
 
 ### Database Entity Relationship Diagram(ERD)
